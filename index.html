@@ -2,89 +2,97 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Тест шрифтов — Алсу и Вадим</title>
+  <title>Font Test — Alsu Vadim</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* === Подключение шрифтов === */
-    @font-face { font-family: f1; src: url("fonts/1.ttf"); }
-    @font-face { font-family: f2; src: url("fonts/2.otf"); }
-    @font-face { font-family: f3; src: url("fonts/3.ttf"); }
-    @font-face { font-family: f4; src: url("fonts/4.otf"); }
-    @font-face { font-family: f5; src: url("fonts/5.TTF"); }
-    @font-face { font-family: f6; src: url("fonts/6.ttf"); }
-    @font-face { font-family: f7; src: url("fonts/7.ttf"); }
-    @font-face { font-family: f8; src: url("fonts/8.TTF"); }
-    @font-face { font-family: f9; src: url("fonts/9.TTF"); }
-    @font-face { font-family: f10; src: url("fonts/10.TTF"); }
-    @font-face { font-family: f11; src: url("fonts/11.TTF"); }
-    @font-face { font-family: f12; src: url("fonts/12.TTF"); }
-    @font-face { font-family: f13; src: url("fonts/13.ttf"); }
-    @font-face { font-family: f14; src: url("fonts/14.ttf"); }
-    @font-face { font-family: f15; src: url("fonts/15.ttf"); }
-    @font-face { font-family: f16; src: url("fonts/16.ttf"); }
-    @font-face { font-family: f17; src: url("fonts/17.ttf"); }
-    @font-face { font-family: f18; src: url("fonts/18.ttf"); }
-    @font-face { font-family: f19; src: url("fonts/19.otf"); }
+    /* Подключение шрифтов */
+    @font-face { font-family: f1; src: url('fonts/1.ttf'); }
+    @font-face { font-family: f2; src: url('fonts/2.otf'); }
+    @font-face { font-family: f3; src: url('fonts/3.ttf'); }
+    @font-face { font-family: f4; src: url('fonts/4.otf'); }
+    @font-face { font-family: f5; src: url('fonts/5.TTF'); }
+    @font-face { font-family: f6; src: url('fonts/6.ttf'); }
+    @font-face { font-family: f7; src: url('fonts/7.ttf'); }
+    @font-face { font-family: f8; src: url('fonts/8.TTF'); }
+    @font-face { font-family: f9; src: url('fonts/9.TTF'); }
+    @font-face { font-family: f10; src: url('fonts/10.TTF'); }
+    @font-face { font-family: f11; src: url('fonts/11.TTF'); }
+    @font-face { font-family: f12; src: url('fonts/12.TTF'); }
+    @font-face { font-family: f13; src: url('fonts/13.ttf'); }
+    @font-face { font-family: f14; src: url('fonts/14.ttf'); }
+    @font-face { font-family: f15; src: url('fonts/15.ttf'); }
+    @font-face { font-family: f16; src: url('fonts/16.ttf'); }
+    @font-face { font-family: f17; src: url('fonts/17.ttf'); }
+    @font-face { font-family: f18; src: url('fonts/18.ttf'); }
+    @font-face { font-family: f19; src: url('fonts/19.otf'); }
 
     body {
       margin: 0;
-      padding: 40px 20px;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
+      padding: 24px;
+      background: #0e0e11;
       color: #fff;
+      font-family: system-ui, sans-serif;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
+      font-size: 24px;
       letter-spacing: 2px;
     }
 
     .font-block {
-      margin-bottom: 40px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 20px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .font-name {
-      font-size: 14px;
+      font-size: 12px;
       opacity: 0.6;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .font-sample {
       font-size: 42px;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 480px) {
+      .font-sample {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
-
 <body>
 
-<h1>Тест шрифтов</h1>
+  <h1>Font test — Alsu Vadim</h1>
 
-<div class="font-block">
-  <div class="font-name">1.ttf</div>
-  <div class="font-sample" style="font-family: f1;">Алсу и Вадим</div>
-</div>
+  <div class="font-block">
+    <div class="font-name">1.ttf</div>
+    <div class="font-sample" style="font-family:f1">Alsu Vadim</div>
+  </div>
 
-<div class="font-block"><div class="font-name">2.otf</div><div class="font-sample" style="font-family: f2;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">3.ttf</div><div class="font-sample" style="font-family: f3;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">4.otf</div><div class="font-sample" style="font-family: f4;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">5.TTF</div><div class="font-sample" style="font-family: f5;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">6.ttf</div><div class="font-sample" style="font-family: f6;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">7.ttf</div><div class="font-sample" style="font-family: f7;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">8.TTF</div><div class="font-sample" style="font-family: f8;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">9.TTF</div><div class="font-sample" style="font-family: f9;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">10.TTF</div><div class="font-sample" style="font-family: f10;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">11.TTF</div><div class="font-sample" style="font-family: f11;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">12.TTF</div><div class="font-sample" style="font-family: f12;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">13.ttf</div><div class="font-sample" style="font-family: f13;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">14.ttf</div><div class="font-sample" style="font-family: f14;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">15.ttf</div><div class="font-sample" style="font-family: f15;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">16.ttf</div><div class="font-sample" style="font-family: f16;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">17.ttf</div><div class="font-sample" style="font-family: f17;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">18.ttf</div><div class="font-sample" style="font-family: f18;">Алсу и Вадим</div></div>
-<div class="font-block"><div class="font-name">19.otf</div><div class="font-sample" style="font-family: f19;">Алсу и Вадим</div></div>
+  <div class="font-block"><div class="font-name">2.otf</div><div class="font-sample" style="font-family:f2">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">3.ttf</div><div class="font-sample" style="font-family:f3">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">4.otf</div><div class="font-sample" style="font-family:f4">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">5.TTF</div><div class="font-sample" style="font-family:f5">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">6.ttf</div><div class="font-sample" style="font-family:f6">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">7.ttf</div><div class="font-sample" style="font-family:f7">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">8.TTF</div><div class="font-sample" style="font-family:f8">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">9.TTF</div><div class="font-sample" style="font-family:f9">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">10.TTF</div><div class="font-sample" style="font-family:f10">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">11.TTF</div><div class="font-sample" style="font-family:f11">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">12.TTF</div><div class="font-sample" style="font-family:f12">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">13.ttf</div><div class="font-sample" style="font-family:f13">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">14.ttf</div><div class="font-sample" style="font-family:f14">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">15.ttf</div><div class="font-sample" style="font-family:f15">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">16.ttf</div><div class="font-sample" style="font-family:f16">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">17.ttf</div><div class="font-sample" style="font-family:f17">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">18.ttf</div><div class="font-sample" style="font-family:f18">Alsu Vadim</div></div>
+  <div class="font-block"><div class="font-name">19.otf</div><div class="font-sample" style="font-family:f19">Alsu Vadim</div></div>
 
 </body>
 </html>
