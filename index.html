@@ -9,6 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== ШРИФТ ИЗ ПАПКИ fonts ===== */
+    @font-face {
+      font-family: 'MyCustomFont';
+      src: url('fonts/1.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root {
       --orange: #ff8c1a;
       --black: #0e0e0e;
@@ -55,9 +63,11 @@
       margin-bottom: 20px;
     }
 
+    /* ИМЕНА С СОБСТВЕННЫМ ШРИФТОМ */
     h2 {
       font-size: 28px;
       margin-bottom: 25px;
+      font-family: 'MyCustomFont', 'Montserrat', sans-serif;
     }
 
     p {
