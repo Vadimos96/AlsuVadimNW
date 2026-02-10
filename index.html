@@ -57,7 +57,7 @@
          2px -2px 0 #000,
         -2px  2px 0 #000,
          2px  2px 0 #000,
-         0   0   8px rgba(0,0,0,0.6);
+         0 0 10px rgba(0,0,0,0.7);
     }
 
     /* ===== HERO ТЕКСТ ===== */
@@ -67,6 +67,13 @@
       letter-spacing: 3px;
       margin-bottom: 15px;
       text-transform: uppercase;
+      color: var(--orange);
+      text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         0 0 18px rgba(255,140,26,0.6);
     }
 
     .mission {
@@ -100,38 +107,35 @@
       overflow: hidden;
     }
 
-    /* ===== ОБЛАКА КОНОХИ ===== */
-    .hero::before,
+    /* ===== ТОНИРОВАНИЕ ФОНА ===== */
     .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.6)
+      );
+      z-index: 1;
+    }
+
+    /* ===== ОБЛАКА КОНОХИ ===== */
+    .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image: url('images/W.png');
       background-repeat: repeat-x;
       background-size: 700px auto;
+      opacity: 0.45;
+      animation: clouds 45s linear infinite;
+      z-index: 0;
       pointer-events: none;
     }
 
-    .hero::before {
-      top: 10%;
-      opacity: 0.35;
-      animation: cloudsSlow 120s linear infinite;
-    }
-
-    .hero::after {
-      top: 35%;
-      opacity: 0.55;
-      animation: cloudsFast 70s linear infinite;
-    }
-
-    @keyframes cloudsSlow {
+    @keyframes clouds {
       from { background-position-x: 0; }
-      to   { background-position-x: 2000px; }
-    }
-
-    @keyframes cloudsFast {
-      from { background-position-x: 0; }
-      to   { background-position-x: -2000px; }
+      to   { background-position-x: -2200px; }
     }
 
     .hero-content {
@@ -155,16 +159,16 @@
     .btn:hover {
       background: var(--orange);
       color: #000;
-      box-shadow: 0 0 20px var(--orange);
+      box-shadow: 0 0 25px var(--orange);
     }
 
     .scroll {
       margin-top: 25px;
       font-size: 14px;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
-    /* ===== ОБЩИЕ СЕКЦИИ ===== */
+    /* ===== ОСТАЛЬНЫЕ СЕКЦИИ ===== */
     h2 {
       font-family: 'MainFont', sans-serif;
       font-size: 30px;
@@ -204,7 +208,7 @@
   <section class="hero show">
     <div class="hero-content">
 
-      <div class="names outline">Алсу и Вадим</div>
+      <div class="names">Алсу и Вадим</div>
       <div class="mission outline">Миссия ранга S</div>
       <div class="subtitle outline">Объединение двух сердец</div>
 
