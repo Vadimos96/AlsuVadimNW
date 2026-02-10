@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Миссия ранга S — Вадим Алсу</title>
+  <title>Алсу и Вадим — Миссия ранга S</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -50,27 +50,43 @@
       transform: translateY(0);
     }
 
-    h1 {
+    /* ===== ОБВОДКА ===== */
+    .outline {
+      text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         0   0   8px rgba(0,0,0,0.6);
+    }
+
+    /* ===== HERO ТЕКСТ ===== */
+    .names {
       font-family: 'MainFont', sans-serif;
-      font-size: 44px;
+      font-size: 48px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .mission {
+      font-family: 'MainFont', sans-serif;
+      font-size: 32px;
       color: var(--orange);
+      letter-spacing: 2px;
       margin-bottom: 20px;
       text-transform: uppercase;
-      letter-spacing: 3px;
     }
 
-    h2 {
-      font-family: 'MainFont', sans-serif;
-      font-size: 30px;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 15px;
     }
 
-    p {
+    .hero-text {
       font-size: 18px;
       line-height: 1.6;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     /* ===== HERO ===== */
@@ -84,7 +100,7 @@
       overflow: hidden;
     }
 
-    /* ===== ОБЛАКА ИЗ W.png ===== */
+    /* ===== ОБЛАКА КОНОХИ ===== */
     .hero::before,
     .hero::after {
       content: '';
@@ -123,9 +139,10 @@
       z-index: 2;
     }
 
+    /* ===== КНОПКА ===== */
     .btn {
       display: inline-block;
-      margin-top: 25px;
+      margin-top: 10px;
       padding: 14px 32px;
       border: 2px solid var(--orange);
       color: var(--orange);
@@ -142,14 +159,24 @@
     }
 
     .scroll {
-      margin-top: 30px;
+      margin-top: 25px;
       font-size: 14px;
       opacity: 0.7;
     }
 
-    /* ===== TIMELINE ===== */
-    .timeline p {
-      font-weight: 500;
+    /* ===== ОБЩИЕ СЕКЦИИ ===== */
+    h2 {
+      font-family: 'MainFont', sans-serif;
+      font-size: 30px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
     .ramen {
@@ -176,12 +203,19 @@
   <!-- HERO -->
   <section class="hero show">
     <div class="hero-content">
-      <h1>Миссия ранга S</h1>
-      <p>Объединение двух сердец</p>
-      <h2>Вадим Алсу</h2>
-      <p>Путь ниндзя привёл нас к моменту,<br>который изменит всё</p>
+
+      <div class="names outline">Алсу и Вадим</div>
+      <div class="mission outline">Миссия ранга S</div>
+      <div class="subtitle outline">Объединение двух сердец</div>
+
+      <div class="hero-text outline">
+        Путь ниндзя привёл нас к моменту,<br>
+        который изменит всё
+      </div>
+
       <a href="#story" class="btn">Принять задание</a>
-      <div class="scroll">⬇ прокрутите свиток ⬇</div>
+
+      <div class="scroll outline">⬇ прокрутите свиток ⬇</div>
     </div>
   </section>
 
@@ -208,7 +242,7 @@
   </section>
 
   <!-- TIMELINE -->
-  <section class="timeline">
+  <section>
     <h2>План операции</h2>
     <p>🕓 16:30 — Сбор союзников</p>
     <p>💍 17:00 — Объединение кланов</p>
@@ -238,18 +272,20 @@
   <!-- FOOTER -->
   <footer>
     <p>Мы будем счастливы разделить этот день с вами</p>
-    <p><span>Вадим Алсу</span></p>
+    <p><span>Алсу и Вадим</span></p>
   </footer>
 
   <script>
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('show');
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
       });
     }, { threshold: 0.2 });
 
-    sections.forEach(s => observer.observe(s));
+    sections.forEach(sec => observer.observe(sec));
   </script>
 
 </body>
