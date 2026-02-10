@@ -8,7 +8,7 @@
   <style>
     /* ===== ШРИФТЫ ===== */
     @font-face {
-      font-family: 'MyCustomFont';
+      font-family: 'NamesFont';
       src: url('fonts/1.woff') format('woff');
     }
 
@@ -59,7 +59,7 @@
     }
 
     h2 {
-      font-family: 'MyCustomFont', sans-serif;
+      font-family: 'NamesFont', sans-serif;
       font-size: 30px;
       margin-bottom: 25px;
       text-transform: uppercase;
@@ -83,39 +83,35 @@
       overflow: hidden;
     }
 
-    /* ОБЛАКА */
+    /* ===== ОБЛАКА КОНОХИ (SVG, ПРОЗРАЧНЫЕ) ===== */
     .hero::before,
     .hero::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 100%;
-      background: url('images/clouds.png') repeat-x;
-      opacity: 0.35;
+      inset: 0;
+      background-repeat: repeat-x;
+      background-size: 800px 300px;
       pointer-events: none;
     }
 
     .hero::before {
-      animation: cloudsMove 90s linear infinite;
-      top: 10%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Cg fill='white' fill-opacity='0.18'%3E%3Cellipse cx='120' cy='180' rx='120' ry='45'/%3E%3Cellipse cx='260' cy='170' rx='160' ry='60'/%3E%3Cellipse cx='430' cy='185' rx='140' ry='50'/%3E%3Cellipse cx='620' cy='170' rx='180' ry='65'/%3E%3C/g%3E%3C/svg%3E");
+      animation: cloudsSlow 120s linear infinite;
     }
 
     .hero::after {
-      animation: cloudsMoveReverse 140s linear infinite;
-      top: 35%;
-      opacity: 0.2;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Cg fill='white' fill-opacity='0.28'%3E%3Cellipse cx='150' cy='160' rx='140' ry='55'/%3E%3Cellipse cx='340' cy='150' rx='190' ry='70'/%3E%3Cellipse cx='560' cy='165' rx='170' ry='60'/%3E%3C/g%3E%3C/svg%3E");
+      animation: cloudsFast 80s linear infinite;
     }
 
-    @keyframes cloudsMove {
-      from { transform: translateX(0); }
-      to   { transform: translateX(50%); }
+    @keyframes cloudsSlow {
+      from { background-position-x: 0; }
+      to   { background-position-x: 1600px; }
     }
 
-    @keyframes cloudsMoveReverse {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+    @keyframes cloudsFast {
+      from { background-position-x: 0; }
+      to   { background-position-x: -1600px; }
     }
 
     .hero-content {
@@ -173,6 +169,7 @@
     </div>
   </section>
 
+  <!-- STORY -->
   <section id="story">
     <h2>История миссии</h2>
     <p>
@@ -182,6 +179,7 @@
     </p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>Мы будем счастливы разделить этот день с вами</p>
     <p><span>Вадим Алсу</span></p>
@@ -190,7 +188,9 @@
   <script>
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
+      });
     }, { threshold: 0.2 });
 
     sections.forEach(s => observer.observe(s));
