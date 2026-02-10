@@ -55,7 +55,7 @@
          2px -2px 0 #000,
         -2px  2px 0 #000,
          2px  2px 0 #000,
-         0 0 12px rgba(0,0,0,0.7);
+         0 0 14px rgba(0,0,0,0.8);
     }
 
     /* ===== HERO ===== */
@@ -75,7 +75,7 @@
       inset: 0;
       background: linear-gradient(
         rgba(0,0,0,0.45),
-        rgba(0,0,0,0.65)
+        rgba(0,0,0,0.7)
       );
       z-index: 1;
     }
@@ -87,7 +87,7 @@
       background: url('images/W.png') repeat-x;
       background-size: 700px auto;
       opacity: 0.45;
-      animation: clouds 30s linear infinite;
+      animation: clouds 22s linear infinite;
       z-index: 0;
     }
 
@@ -99,14 +99,13 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      transform: translateY(40px); /* СМЕЩЕНИЕ ВСЕГО КОНТЕНТА ВНИЗ */
+      transform: translateY(40px);
     }
 
-    /* ===== ЛОГО ===== */
+    /* ===== LOGO ===== */
     .logo {
       position: relative;
       display: inline-block;
-      margin-bottom: 50px;
     }
 
     .logo::before {
@@ -121,8 +120,8 @@
     .names {
       position: relative;
       font-family: 'MainFont', sans-serif;
-      font-size: 64px; /* КРУПНЕЕ */
-      letter-spacing: 0.5px; /* МЕНЬШЕ РАССТОЯНИЕ */
+      font-size: 70px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       color: var(--orange);
       z-index: 1;
@@ -131,27 +130,31 @@
          2px -2px 0 #000,
         -2px  2px 0 #000,
          2px  2px 0 #000,
-         0 0 26px rgba(255,140,26,0.7);
+         0 0 28px rgba(255,140,26,0.75);
     }
 
-    /* ===== ТЕКСТ МЕНЬШЕ ===== */
+    /* ===== БЛОК ПОД ИМЕНАМИ (СМЕЩЁН ВНИЗ) ===== */
+    .hero-bottom {
+      margin-top: 85px; /* ← ВОТ ЗДЕСЬ СМЕЩЕНИЕ */
+    }
+
     .mission {
       font-family: 'MainFont', sans-serif;
       font-size: 26px;
       color: var(--orange);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       text-transform: uppercase;
     }
 
     .subtitle {
       font-size: 18px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .hero-text {
       font-size: 16px;
       line-height: 1.5;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .btn {
@@ -173,12 +176,12 @@
     }
 
     .scroll {
-      margin-top: 20px;
+      margin-top: 22px;
       font-size: 12px;
       opacity: 0.75;
     }
 
-    /* ===== СЕКЦИИ ===== */
+    /* ===== OTHER ===== */
     h2 {
       font-family: 'MainFont', sans-serif;
       font-size: 28px;
@@ -214,16 +217,19 @@
       <div class="names">Алсу&nbsp;и&nbsp;Вадим</div>
     </div>
 
-    <div class="mission outline">Миссия ранга S</div>
-    <div class="subtitle outline">Объединение двух сердец</div>
+    <!-- ВСЁ НИЖЕ СМЕЩЕНО ВНИЗ -->
+    <div class="hero-bottom outline">
+      <div class="mission">Миссия ранга S</div>
+      <div class="subtitle">Объединение двух сердец</div>
 
-    <div class="hero-text outline">
-      Путь ниндзя привёл нас к моменту,<br>
-      который изменит всё
+      <div class="hero-text">
+        Путь ниндзя привёл нас к моменту,<br>
+        который изменит всё
+      </div>
+
+      <a href="#story" class="btn">Принять задание</a>
+      <div class="scroll">⬇ прокрутите свиток ⬇</div>
     </div>
-
-    <a href="#story" class="btn">Принять задание</a>
-    <div class="scroll outline">⬇ прокрутите свиток ⬇</div>
 
   </div>
 </section>
