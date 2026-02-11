@@ -47,7 +47,6 @@ body {
   justify-content: center;
 }
 
-/* затемнение */
 .hero::after {
   content: '';
   position: absolute;
@@ -56,7 +55,6 @@ body {
   z-index: 1;
 }
 
-/* дальний слой облаков */
 .hero::before {
   content: '';
   position: absolute;
@@ -68,7 +66,6 @@ body {
   z-index: 0;
 }
 
-/* ближний слой облаков */
 .clouds-front {
   position: absolute;
   inset: 0;
@@ -125,14 +122,13 @@ body {
   z-index: 0;
 }
 
-/* Двойной слой для объёмных имён */
+/* Двойной слой для имён */
 .names-wrapper {
   position: relative;
   display: inline-block;
   text-align: center;
 }
 
-/* Нижний слой — тёмная обводка */
 .names-outline {
   font-family: 'MainFont', sans-serif;
   font-size: 64px;
@@ -151,7 +147,6 @@ body {
     -2px -2px 0 #000;
 }
 
-/* Верхний слой — градиент */
 .names-gradient {
   font-family: 'MainFont', sans-serif;
   font-size: 64px;
@@ -160,7 +155,6 @@ body {
   text-transform: uppercase;
   position: relative;
   z-index: 2;
-
   background: linear-gradient(
     180deg,
     var(--orange-light) 0%,
@@ -176,12 +170,36 @@ body {
   margin-bottom: 40px;
 }
 
-.mission {
+/* Двойной слой для миссии */
+.mission-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.mission-outline {
   font-family: 'MainFont', sans-serif;
   font-size: 22px;
-  margin-bottom: 12px;
   text-transform: uppercase;
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0 2px 4px rgba(0,0,0,0.5);
+}
 
+.mission-gradient {
+  font-family: 'MainFont', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
   background: linear-gradient(
     180deg,
     var(--orange-light) 0%,
@@ -190,14 +208,7 @@ body {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* Мягкая объёмная тень */
-  text-shadow:
-    1px 1px 0 #000,
-    2px 2px 2px rgba(0,0,0,0.5),
-    0 0 6px rgba(0,0,0,0.3);
 }
-
 
 .subtitle {
   font-size: 16px;
@@ -279,6 +290,10 @@ footer span {
     font-size: 42px;
   }
 
+  .mission-gradient, .mission-outline {
+    font-size: 18px;
+  }
+
   .logo::before {
     inset: -100px -140px;
   }
@@ -312,7 +327,10 @@ footer span {
 
     <!-- НИЗ -->
     <div class="hero-bottom">
-      <div class="mission">Миссия ранга S</div>
+      <div class="mission-wrapper">
+        <div class="mission-outline">Миссия ранга S</div>
+        <div class="mission-gradient">Миссия ранга S</div>
+      </div>
       <div class="subtitle">Объединение двух сердец</div>
       <div class="hero-text">
         Путь ниндзя привёл нас к моменту,<br>
