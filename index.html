@@ -34,8 +34,9 @@
       overflow-x: hidden;
     }
 
+    /* ===== ОБЩИЕ СЕКЦИИ ===== */
     section {
-      padding: 80px 20px;
+      padding: 90px 20px;
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
@@ -47,6 +48,19 @@
     section.show {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    h2 {
+      font-family: 'MainFont', sans-serif;
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
 
     .outline {
@@ -65,8 +79,6 @@
       background: url('images/Fon1.jpg') center/cover no-repeat;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* ВАЖНО */
     }
 
     .hero::after {
@@ -87,7 +99,7 @@
       background: url('images/W.png') repeat-x;
       background-size: 700px auto;
       opacity: 0.45;
-      animation: clouds 38s linear infinite; /* ЗАМЕДЛИЛИ */
+      animation: clouds 38s linear infinite;
       z-index: 0;
     }
 
@@ -104,9 +116,12 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 90px 20px 70px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    /* ===== LOGO / ИМЕНА ===== */
+    /* ===== LOGO ===== */
     .logo {
       position: relative;
       display: inline-block;
@@ -125,7 +140,7 @@
     .names {
       position: relative;
       font-family: 'MainFont', sans-serif;
-      font-size: 52px; /* УМЕНЬШИЛИ */
+      font-size: 52px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       color: var(--orange);
@@ -138,9 +153,9 @@
          0 0 26px rgba(255,140,26,0.75);
     }
 
-    /* ===== НИЖНИЙ БЛОК ===== */
+    /* ===== НИЗ HERO ===== */
     .hero-bottom {
-      margin-top: auto; /* ПРИЖИМАЕТ ВНИЗ */
+      margin-top: auto;
     }
 
     .mission {
@@ -186,22 +201,9 @@
       opacity: 0.75;
     }
 
-    /* ===== OTHER ===== */
-    h2 {
-      font-family: 'MainFont', sans-serif;
-      font-size: 28px;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
+    /* ===== FOOTER ===== */
     footer {
-      padding: 60px 20px;
+      padding: 70px 20px;
       background: #050505;
       text-align: center;
     }
@@ -226,15 +228,14 @@
 
 <body>
 
+<!-- HERO -->
 <section class="hero show">
   <div class="hero-content">
 
-    <!-- ВЕРХ -->
     <div class="logo">
       <div class="names">Алсу&nbsp;и&nbsp;Вадим</div>
     </div>
 
-    <!-- НИЗ -->
     <div class="hero-bottom outline">
       <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
@@ -251,11 +252,48 @@
   </div>
 </section>
 
+<!-- STORY -->
 <section id="story">
   <h2>История миссии</h2>
   <p>
     Как и в любой легенде, всё началось с простой встречи.<br>
-    Со временем пути переплелись.
+    Со временем пути переплелись,<br>
+    а одиночество уступило место доверию.
+  </p>
+  <p>
+    Теперь две чакры стали одной,<br>
+    и впереди — миссия длиною в жизнь.
+  </p>
+</section>
+
+<!-- DETAILS -->
+<section>
+  <h2>Досье операции</h2>
+  <p>📅 18 февраля 2026 года</p>
+  <p>📍 Комплекс «Тан»</p>
+  <p>г. Уфа, ул. Рихарда Зорге, 45</p>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <h2>План операции</h2>
+  <p>🕓 16:30 — Сбор союзников</p>
+  <p>💍 17:00 — Объединение кланов</p>
+  <p>🍜 17:30 — Праздничный рамэн</p>
+  <p>🌙 23:00 — Завершение миссии</p>
+</section>
+
+<!-- HOKAGE -->
+<section>
+  <h2>Слово Хокаге</h2>
+  <p>
+    Истинная сила ниндзя — в узах,<br>
+    которые он создаёт.
+  </p>
+  <p>
+    Пусть этот союз будет крепким,<br>
+    путь — светлым,<br>
+    а дом — полной чашей.
   </p>
 </section>
 
