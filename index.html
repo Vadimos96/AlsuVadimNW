@@ -46,14 +46,14 @@ body {
   justify-content: center;
 }
 
-/* затемнение */
+/* Мягкое затемнение */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.7)
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.45)
   );
   z-index: 1;
 }
@@ -95,7 +95,7 @@ body {
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3; /* Весь текст поверх всего */
   width: 100%;
   max-width: 1000px;
   height: 100%;
@@ -106,7 +106,7 @@ body {
   text-align: center;
 }
 
-/* ===== ИМЕНА В ЦЕНТРЕ ===== */
+/* ===== ИМЕНА ===== */
 
 .center-block {
   flex: 1;
@@ -120,15 +120,17 @@ body {
   display: inline-block;
 }
 
+/* NFon позади */
 .logo::before {
   content: '';
   position: absolute;
   inset: -150px -220px;
   background: url('images/NFon.png') center/contain no-repeat;
-  opacity: 0.95;
+  opacity: 0.9;
   z-index: 0;
 }
 
+/* Имена поверх NFon */
 .names {
   position: relative;
   font-family: 'MainFont', sans-serif;
@@ -137,13 +139,14 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--orange);
-  z-index: 1;
+  z-index: 2;
+
   text-shadow:
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-     0 0 28px rgba(255,140,26,0.8);
+     0 0 24px rgba(255,140,26,0.7);
 }
 
 /* ===== НИЖНИЙ БЛОК ===== */
@@ -152,12 +155,19 @@ body {
   margin-bottom: 40px;
 }
 
+/* Миссия с обводкой */
 .mission {
   font-family: 'MainFont', sans-serif;
   font-size: 22px;
-  color: var(--orange);
   margin-bottom: 12px;
   text-transform: uppercase;
+  color: var(--orange);
+
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 .subtitle {
@@ -194,7 +204,7 @@ body {
   opacity: 0.7;
 }
 
-/* ===== СЕКЦИИ НИЖЕ ===== */
+/* ===== СЕКЦИИ ===== */
 
 section {
   padding: 100px 20px;
@@ -257,7 +267,6 @@ footer span {
 
   <div class="hero-content">
 
-    <!-- ЦЕНТР -->
     <div class="center-block">
       <div class="logo">
         <div class="names">
@@ -267,7 +276,6 @@ footer span {
       </div>
     </div>
 
-    <!-- НИЗ -->
     <div class="hero-bottom">
       <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
