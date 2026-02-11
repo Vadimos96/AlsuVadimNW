@@ -62,11 +62,11 @@
     .hero {
       position: relative;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: url('images/Fon1.jpg') center/cover no-repeat;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* ВАЖНО */
     }
 
     .hero::after {
@@ -87,7 +87,7 @@
       background: url('images/W.png') repeat-x;
       background-size: 700px auto;
       opacity: 0.45;
-      animation: clouds 22s linear infinite;
+      animation: clouds 38s linear infinite; /* ЗАМЕДЛИЛИ */
       z-index: 0;
     }
 
@@ -99,19 +99,24 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      transform: translateY(40px);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 90px 20px 70px;
     }
 
-    /* ===== LOGO ===== */
+    /* ===== LOGO / ИМЕНА ===== */
     .logo {
       position: relative;
       display: inline-block;
+      margin: 0 auto;
     }
 
     .logo::before {
       content: '';
       position: absolute;
-      inset: -130px -220px;
+      inset: -120px -200px;
       background: url('images/NFon.png') center/contain no-repeat;
       opacity: 0.95;
       z-index: 0;
@@ -120,7 +125,7 @@
     .names {
       position: relative;
       font-family: 'MainFont', sans-serif;
-      font-size: 70px;
+      font-size: 52px; /* УМЕНЬШИЛИ */
       letter-spacing: 0.5px;
       text-transform: uppercase;
       color: var(--orange);
@@ -130,31 +135,31 @@
          2px -2px 0 #000,
         -2px  2px 0 #000,
          2px  2px 0 #000,
-         0 0 28px rgba(255,140,26,0.75);
+         0 0 26px rgba(255,140,26,0.75);
     }
 
-    /* ===== БЛОК ПОД ИМЕНАМИ (СМЕЩЁН ВНИЗ) ===== */
+    /* ===== НИЖНИЙ БЛОК ===== */
     .hero-bottom {
-      margin-top: 85px; /* ← ВОТ ЗДЕСЬ СМЕЩЕНИЕ */
+      margin-top: auto; /* ПРИЖИМАЕТ ВНИЗ */
     }
 
     .mission {
       font-family: 'MainFont', sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       color: var(--orange);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       text-transform: uppercase;
     }
 
     .subtitle {
-      font-size: 18px;
-      margin-bottom: 12px;
+      font-size: 17px;
+      margin-bottom: 10px;
     }
 
     .hero-text {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.5;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .btn {
@@ -176,7 +181,7 @@
     }
 
     .scroll {
-      margin-top: 22px;
+      margin-top: 18px;
       font-size: 12px;
       opacity: 0.75;
     }
@@ -205,6 +210,17 @@
       color: var(--orange);
       font-family: 'MainFont', sans-serif;
     }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px) {
+      .names {
+        font-size: 38px;
+      }
+
+      .logo::before {
+        inset: -90px -140px;
+      }
+    }
   </style>
 </head>
 
@@ -213,11 +229,12 @@
 <section class="hero show">
   <div class="hero-content">
 
+    <!-- ВЕРХ -->
     <div class="logo">
       <div class="names">Алсу&nbsp;и&nbsp;Вадим</div>
     </div>
 
-    <!-- ВСЁ НИЖЕ СМЕЩЕНО ВНИЗ -->
+    <!-- НИЗ -->
     <div class="hero-bottom outline">
       <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
