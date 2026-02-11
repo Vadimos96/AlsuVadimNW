@@ -17,7 +17,6 @@
 }
 
 :root {
-  --orange: #ff8c1a;
   --light: #f5f2ee;
 }
 
@@ -46,38 +45,38 @@ body {
   justify-content: center;
 }
 
-/* затемнение */
+/* МЕНЬШЕЕ ЗАТЕМНЕНИЕ */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.7)
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.45)
   );
   z-index: 1;
 }
 
-/* Дальний слой облаков */
+/* Дальний слой */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('images/W.png') repeat-x;
   background-size: 900px auto;
-  opacity: 0.25;
-  animation: cloudsFar 80s linear infinite;
+  opacity: 0.22;
+  animation: cloudsFar 90s linear infinite;
   z-index: 0;
 }
 
-/* Ближний слой облаков */
+/* Ближний слой */
 .clouds-front {
   position: absolute;
   inset: 0;
   background: url('images/W.png') repeat-x;
   background-size: 650px auto;
   opacity: 0.45;
-  animation: cloudsNear 35s linear infinite;
+  animation: cloudsNear 40s linear infinite;
   z-index: 0;
 }
 
@@ -106,7 +105,7 @@ body {
   text-align: center;
 }
 
-/* ===== ИМЕНА В ЦЕНТРЕ ===== */
+/* ===== ЦЕНТР ИМЕН ===== */
 
 .center-block {
   flex: 1;
@@ -129,21 +128,26 @@ body {
   z-index: 0;
 }
 
+/* ГРАДИЕНТНЫЕ ИМЕНА */
 .names {
   position: relative;
   font-family: 'MainFont', sans-serif;
   font-size: 64px;
   line-height: 1.1;
-  letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--orange);
   z-index: 1;
+
+  background: linear-gradient(180deg, #ffb347, #ff6a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* ТОЛСТАЯ ОБВОДКА */
   text-shadow:
-    -2px -2px 0 #000,
-     2px -2px 0 #000,
-    -2px  2px 0 #000,
-     2px  2px 0 #000,
-     0 0 28px rgba(255,140,26,0.8);
+    -3px -3px 0 #000,
+     3px -3px 0 #000,
+    -3px  3px 0 #000,
+     3px  3px 0 #000,
+     0 0 18px rgba(255,100,0,0.6);
 }
 
 /* ===== НИЖНИЙ БЛОК ===== */
@@ -155,9 +159,19 @@ body {
 .mission {
   font-family: 'MainFont', sans-serif;
   font-size: 22px;
-  color: var(--orange);
-  margin-bottom: 12px;
   text-transform: uppercase;
+  margin-bottom: 12px;
+
+  background: linear-gradient(180deg, #ffb347, #ff6a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* ОБВОДКА ДЛЯ МИССИИ */
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
 }
 
 .subtitle {
@@ -173,8 +187,8 @@ body {
 .btn {
   display: inline-block;
   padding: 12px 28px;
-  border: 2px solid var(--orange);
-  color: var(--orange);
+  border: 2px solid #ff8c1a;
+  color: #ff8c1a;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -183,9 +197,9 @@ body {
 }
 
 .btn:hover {
-  background: var(--orange);
+  background: #ff8c1a;
   color: #000;
-  box-shadow: 0 0 25px var(--orange);
+  box-shadow: 0 0 25px #ff8c1a;
 }
 
 .scroll {
@@ -231,7 +245,9 @@ footer {
 }
 
 footer span {
-  color: var(--orange);
+  background: linear-gradient(180deg, #ffb347, #ff6a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: 'MainFont', sans-serif;
 }
 
@@ -257,7 +273,6 @@ footer span {
 
   <div class="hero-content">
 
-    <!-- ЦЕНТР -->
     <div class="center-block">
       <div class="logo">
         <div class="names">
@@ -267,7 +282,6 @@ footer span {
       </div>
     </div>
 
-    <!-- НИЗ -->
     <div class="hero-bottom">
       <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
@@ -281,33 +295,6 @@ footer span {
 
   </div>
 </section>
-
-<section id="story">
-  <h2>История миссии</h2>
-  <p>
-    Как и в любой легенде, всё началось с простой встречи.<br>
-    Со временем пути переплелись,<br>
-    а одиночество уступило место доверию.
-  </p>
-</section>
-
-<footer>
-  <p>Мы будем счастливы разделить этот день с вами</p>
-  <p><span>Алсу и Вадим</span></p>
-</footer>
-
-<script>
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(sec => observer.observe(sec));
-</script>
 
 </body>
 </html>
