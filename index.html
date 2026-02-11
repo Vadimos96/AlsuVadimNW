@@ -17,7 +17,6 @@
 }
 
 :root {
-  --orange: #ff8c1a;
   --light: #f5f2ee;
 }
 
@@ -105,6 +104,15 @@ body {
   justify-content: space-between;
 }
 
+/* ===== ГРАДИЕНТ ОРАНЖЕВЫЙ ===== */
+
+.orange-gradient {
+  background: linear-gradient(180deg, #ffb347 0%, #ff8c1a 50%, #ff5e00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ===== ИМЕНА ===== */
 
 .center-block {
@@ -119,14 +127,13 @@ body {
   display: inline-block;
 }
 
-/* NFon — теперь НИЖЕ текста */
 .logo::before {
   content: '';
   position: absolute;
   inset: -150px -220px;
   background: url('images/NFon.png') center/contain no-repeat;
   opacity: 0.9;
-  z-index: 0; /* самый нижний слой */
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -137,22 +144,21 @@ body {
   line-height: 1.1;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--orange);
-  z-index: 2; /* выше NFon */
+  z-index: 2;
 
   text-shadow:
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-     0 0 24px rgba(255,140,26,0.7);
+     0 0 24px rgba(255,140,26,0.6);
 }
 
 /* ===== НИЖНИЙ БЛОК ===== */
 
 .hero-bottom {
   position: relative;
-  z-index: 10; /* ВЫШЕ NFon */
+  z-index: 10;
   margin-bottom: 40px;
 }
 
@@ -161,7 +167,6 @@ body {
   font-size: 22px;
   margin-bottom: 12px;
   text-transform: uppercase;
-  color: var(--orange);
 
   text-shadow:
     -1px -1px 0 #000,
@@ -183,8 +188,8 @@ body {
 .btn {
   display: inline-block;
   padding: 12px 28px;
-  border: 2px solid var(--orange);
-  color: var(--orange);
+  border: 2px solid #ff8c1a;
+  color: #ff8c1a;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -193,9 +198,9 @@ body {
 }
 
 .btn:hover {
-  background: var(--orange);
+  background: #ff8c1a;
   color: #000;
-  box-shadow: 0 0 25px var(--orange);
+  box-shadow: 0 0 25px #ff8c1a;
 }
 
 .scroll {
@@ -206,19 +211,13 @@ body {
 
 /* ===== СЕКЦИИ ===== */
 
-section {
+section:not(.hero) {
   padding: 100px 20px;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s ease;
-}
-
-section.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 h2 {
@@ -228,12 +227,6 @@ h2 {
   text-transform: uppercase;
 }
 
-p {
-  font-size: 17px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
 footer {
   padding: 70px 20px;
   background: #050505;
@@ -241,7 +234,6 @@ footer {
 }
 
 footer span {
-  color: var(--orange);
   font-family: 'MainFont', sans-serif;
 }
 
@@ -261,7 +253,7 @@ footer span {
 
 <body>
 
-<section class="hero show">
+<section class="hero">
 
   <div class="clouds-front"></div>
 
@@ -269,7 +261,7 @@ footer span {
 
     <div class="center-block">
       <div class="logo">
-        <div class="names">
+        <div class="names orange-gradient">
           Алсу<br>
           Вадим
         </div>
@@ -277,7 +269,7 @@ footer span {
     </div>
 
     <div class="hero-bottom">
-      <div class="mission">Миссия ранга S</div>
+      <div class="mission orange-gradient">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
       <div class="hero-text">
         Путь ниндзя привёл нас к моменту,<br>
@@ -291,7 +283,7 @@ footer span {
 </section>
 
 <section id="story">
-  <h2>История миссии</h2>
+  <h2 class="orange-gradient">История миссии</h2>
   <p>
     Как и в любой легенде, всё началось с простой встречи.<br>
     Со временем пути переплелись,<br>
@@ -301,21 +293,8 @@ footer span {
 
 <footer>
   <p>Мы будем счастливы разделить этот день с вами</p>
-  <p><span>Алсу и Вадим</span></p>
+  <p><span class="orange-gradient">Алсу и Вадим</span></p>
 </footer>
-
-<script>
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(sec => observer.observe(sec));
-</script>
 
 </body>
 </html>
