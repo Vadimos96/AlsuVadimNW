@@ -17,7 +17,6 @@
 }
 
 :root {
-  --orange: #ff8c1a;
   --light: #f5f2ee;
 }
 
@@ -46,14 +45,14 @@ body {
   justify-content: center;
 }
 
-/* затемнение */
+/* МЕНЬШЕЕ затемнение */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.7)
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.45)
   );
   z-index: 1;
 }
@@ -106,7 +105,7 @@ body {
   text-align: center;
 }
 
-/* ===== ИМЕНА В ЦЕНТРЕ ===== */
+/* ===== ИМЕНА ===== */
 
 .center-block {
   flex: 1;
@@ -136,14 +135,19 @@ body {
   line-height: 1.1;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--orange);
   z-index: 1;
+
+  background: linear-gradient(180deg, #ffb347 0%, #ff8c1a 50%, #ff5e00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
   text-shadow:
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-     0 0 28px rgba(255,140,26,0.8);
+     0 0 22px rgba(255,140,26,0.6);
 }
 
 /* ===== НИЖНИЙ БЛОК ===== */
@@ -155,9 +159,19 @@ body {
 .mission {
   font-family: 'MainFont', sans-serif;
   font-size: 22px;
-  color: var(--orange);
   margin-bottom: 12px;
   text-transform: uppercase;
+
+  background: linear-gradient(180deg, #ffb347 0%, #ff8c1a 60%, #ff5e00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 .subtitle {
@@ -173,8 +187,8 @@ body {
 .btn {
   display: inline-block;
   padding: 12px 28px;
-  border: 2px solid var(--orange);
-  color: var(--orange);
+  border: 2px solid #ff8c1a;
+  color: #ff8c1a;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -183,9 +197,9 @@ body {
 }
 
 .btn:hover {
-  background: var(--orange);
+  background: #ff8c1a;
   color: #000;
-  box-shadow: 0 0 25px var(--orange);
+  box-shadow: 0 0 25px #ff8c1a;
 }
 
 .scroll {
@@ -194,7 +208,7 @@ body {
   opacity: 0.7;
 }
 
-/* ===== СЕКЦИИ НИЖЕ ===== */
+/* ===== СЕКЦИИ ===== */
 
 section {
   padding: 100px 20px;
@@ -231,8 +245,11 @@ footer {
 }
 
 footer span {
-  color: var(--orange);
   font-family: 'MainFont', sans-serif;
+  background: linear-gradient(180deg, #ffb347, #ff5e00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ===== МОБИЛКА ===== */
@@ -257,7 +274,6 @@ footer span {
 
   <div class="hero-content">
 
-    <!-- ЦЕНТР -->
     <div class="center-block">
       <div class="logo">
         <div class="names">
@@ -267,7 +283,6 @@ footer span {
       </div>
     </div>
 
-    <!-- НИЗ -->
     <div class="hero-bottom">
       <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
