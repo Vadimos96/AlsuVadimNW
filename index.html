@@ -56,7 +56,7 @@ body {
   z-index: 1;
 }
 
-/* облака дальние */
+/* Облака дальние */
 .hero::before {
   content: '';
   position: absolute;
@@ -68,7 +68,7 @@ body {
   z-index: 0;
 }
 
-/* облака ближние */
+/* Облака ближние */
 .clouds-front {
   position: absolute;
   inset: 0;
@@ -122,50 +122,41 @@ body {
 .logo::before {
   content: '';
   position: absolute;
-  inset: -90px -140px;
+  inset: -80px -120px;
   background: url('images/NFon.png') center/contain no-repeat;
   opacity: 0.9;
   z-index: 0;
 }
 
-.names-wrapper {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
-
-.names-outline {
-  font-family: 'MainFont', sans-serif;
-  font-size: 92px;
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  text-shadow:
-    3px 3px 0 #000,
-    -3px 3px 0 #000,
-    3px -3px 0 #000,
-    -3px -3px 0 #000;
-}
-
+/* ДВОЙНОЙ КОНТУР */
 .names-gradient {
   font-family: 'MainFont', sans-serif;
-  font-size: 92px;
+  font-size: 100px;
   line-height: 1.05;
   text-transform: uppercase;
   position: relative;
   z-index: 2;
+
   background: linear-gradient(
     180deg,
     var(--orange-light) 0%,
     var(--orange-mid) 50%,
     var(--orange-dark) 100%
   );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  /* Внутренний белый контур */
+  -webkit-text-stroke: 3px #ffffff;
+
+  /* Внешний черный контур + объем */
+  text-shadow:
+    4px 4px 0 #000,
+    -4px 4px 0 #000,
+    4px -4px 0 #000,
+    -4px -4px 0 #000,
+    0 8px 12px rgba(0,0,0,0.6);
 }
 
 /* ===== НИЗ HERO ===== */
@@ -174,42 +165,28 @@ body {
   padding-bottom: 30px;
 }
 
-.mission-wrapper {
-  position: relative;
-  display: inline-block;
+.mission-title {
+  font-family: 'MainFont', sans-serif;
+  font-size: 26px;
+  text-transform: uppercase;
   margin-bottom: 18px;
-}
 
-.mission-outline {
-  font-family: 'MainFont', sans-serif;
-  font-size: 26px;
-  text-transform: uppercase;
-  color: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  text-shadow:
-    2px 2px 0 #000,
-    -2px 2px 0 #000,
-    2px -2px 0 #000,
-    -2px -2px 0 #000;
-}
-
-.mission-gradient {
-  font-family: 'MainFont', sans-serif;
-  font-size: 26px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 2;
   background: linear-gradient(
     180deg,
-    var(--orange-light) 0%,
-    var(--orange-mid) 50%,
-    var(--orange-dark) 100%
+    var(--orange-light),
+    var(--orange-dark)
   );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 2px #ffffff;
+
+  text-shadow:
+    3px 3px 0 #000,
+    -3px 3px 0 #000,
+    3px -3px 0 #000,
+    -3px -3px 0 #000;
 }
 
 .subtitle {
@@ -270,10 +247,6 @@ p {
   margin-bottom: 15px;
 }
 
-.timeline p {
-  font-weight: 500;
-}
-
 footer {
   padding: 70px 20px;
   background: #050505;
@@ -288,18 +261,16 @@ footer span {
 /* ===== МОБИЛКА ===== */
 
 @media (max-width: 600px) {
-  .names-outline,
   .names-gradient {
-    font-size: 54px;
+    font-size: 58px;
   }
 
-  .mission-outline,
-  .mission-gradient {
+  .mission-title {
     font-size: 20px;
   }
 
   .logo::before {
-    inset: -60px -90px;
+    inset: -50px -70px;
   }
 }
 </style>
@@ -308,29 +279,20 @@ footer span {
 <body>
 
 <section class="hero show">
-
   <div class="clouds-front"></div>
 
   <div class="hero-content">
 
     <div class="center-block">
       <div class="logo">
-        <div class="names-wrapper">
-          <div class="names-outline">
-            Алсу<br>Вадим
-          </div>
-          <div class="names-gradient">
-            Алсу<br>Вадим
-          </div>
+        <div class="names-gradient">
+          Алсу<br>Вадим
         </div>
       </div>
     </div>
 
     <div class="hero-bottom">
-      <div class="mission-wrapper">
-        <div class="mission-outline">Миссия ранга S</div>
-        <div class="mission-gradient">Миссия ранга S</div>
-      </div>
+      <div class="mission-title">Миссия ранга S</div>
 
       <div class="subtitle">Объединение двух сердец</div>
 
@@ -348,12 +310,12 @@ footer span {
 <section id="story">
   <h2>История миссии</h2>
   <p>
-    Как и в любой легенде, всё началось с простой встречи.<br>
-    Со временем пути переплелись,<br>
+    Как и в любой легенде, всё началось с простой встречи.
+    Со временем пути переплелись,
     а одиночество уступило место доверию.
   </p>
   <p>
-    Теперь две чакры стали одной,<br>
+    Теперь две чакры стали одной,
     и впереди — миссия длиною в жизнь.
   </p>
 </section>
@@ -365,7 +327,7 @@ footer span {
   <p>г. Уфа, ул. Рихарда Зорге, 45</p>
 </section>
 
-<section class="timeline">
+<section>
   <h2>План операции</h2>
   <p>🕓 16:30 — Сбор союзников</p>
   <p>💍 17:00 — Объединение кланов</p>
@@ -377,7 +339,6 @@ footer span {
   <h2>Слово Хокаге</h2>
   <p>Истинная сила ниндзя — в узах, которые он создаёт.</p>
   <p>Пусть этот союз будет крепким, путь — светлым, а дом — полной чашей.</p>
-  <p><em>Архив Деревни Скрытого Листа</em></p>
 </section>
 
 <footer>
