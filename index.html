@@ -10,7 +10,7 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  /* Более яркий пастельный градиент */
+  /* Пастельный яркий фон */
   --orange-light:#f6a84f;
   --orange-mid:#ea8f2d;
   --orange-dark:#c96512;
@@ -28,7 +28,6 @@ body{
   color:var(--text-light);
   overflow-x:hidden;
 
-  /* Единый плавный фон */
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
@@ -211,11 +210,32 @@ section.show{
   opacity:.85;
 }
 
-/* ===== НИЖНИЙ ТЕКСТ ===== */
+/* ===== НИЖНИЙ ТЕКСТ И СЮРИКЕНЫ ===== */
 
 section:not(.hero) h2{
+  position:relative;
+  display:inline-block;
+  padding-left:45px;
   margin-bottom:25px;
   text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+section:not(.hero) h2::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  height:28px;
+  background:url('images/shuriken.png') center/contain no-repeat;
+  animation:spin 6s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255,180,90,0.6));
+}
+
+@keyframes spin{
+  from{transform:translateY(-50%) rotate(0deg);}
+  to{transform:translateY(-50%) rotate(360deg);}
 }
 
 section:not(.hero) p{
@@ -247,6 +267,8 @@ html{
   section{padding:60px 20px;}
   .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
+  section:not(.hero) h2{padding-left:38px;}
+  section:not(.hero) h2::before{width:24px;height:24px;}
 }
 </style>
 </head>
