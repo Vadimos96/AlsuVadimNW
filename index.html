@@ -1,304 +1,292 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Алсу и Вадим — Миссия ранга S</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>Алсу と Вадим — Миссия ранга S</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    @font-face { font-family: 'MainFont'; src: url('fonts/1.woff') format('woff'); }
-    @font-face { font-family: 'AnimeAce'; src: url('fonts/AnimeAce.ttf') format('truetype'); }
+<style>
+@font-face { font-family:'MainFont'; src:url('fonts/1.woff') format('woff'); }
+@font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
-    :root {
-      --orange: #ff8c1a;
-      --light: #f5f2ee;
-      --dark-orange: #9c4e00;
-      --mid-orange: #c96a12;
-      --soft-orange: #e07b1a;
-    }
+:root{
+  --orange-light:#e58a2a;
+  --orange-mid:#c96a12;
+  --orange-dark:#7a3b00;
+  --text-light:#fff;
+}
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-      background:#000;
-      color:var(--light);
-      font-family:'AnimeAce', sans-serif;
-      overflow-x:hidden;
-    }
+body{
+  font-family:'AnimeAce',sans-serif;
+  color:var(--text-light);
+  overflow-x:hidden;
 
-    section {
-      padding:80px 20px;
-      max-width:900px;
-      margin:0 auto;
-      text-align:center;
-      opacity:0;
-      transform:translateY(40px);
-      transition:1s ease;
-    }
+  /* ЕДИНЫЙ ФОН ДЛЯ ВСЕГО САЙТА */
+  background:linear-gradient(
+    to bottom,
+    var(--orange-light) 0%,
+    var(--orange-mid) 45%,
+    var(--orange-dark) 100%
+  );
+}
 
-    section.show {
-      opacity:1;
-      transform:translateY(0);
-    }
+/* ===== ОБЩИЕ СЕКЦИИ ===== */
 
-    /* ===== HERO (НЕ МЕНЯЕМ СТИЛЬ) ===== */
-    .hero {
-      position:relative;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:url('images/Fon1.png') center/cover no-repeat; /* заменено */
-      overflow:hidden;
-    }
+section{
+  padding:90px 20px;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+  position:relative;
+  background:transparent; /* никаких отдельных фонов */
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
 
-    .hero::after {
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65));
-      z-index:1;
-    }
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
 
-    .hero::before {
-      content:'';
-      position:absolute;
-      inset:0;
-      background:url('images/W.png') repeat-x;
-      background-size:700px auto;
-      opacity:0.45;
-      animation:clouds 35s linear infinite;
-      z-index:0;
-    }
+/* ===== HERO ===== */
 
-    @keyframes clouds {
-      from { background-position-x:0; }
-      to { background-position-x:-2600px; }
-    }
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  text-align:center;
+  background:url('images/Fon1.png') center/cover no-repeat;
+}
 
-    .hero-content {
-      position:relative;
-      z-index:2;
-    }
+/* затемнение без черного стыка */
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.4)
+  );
+  z-index:1;
+}
 
-    /* ===== ТИТУЛЬНЫЙ БЛОК ===== */
-    .title-block {
-      position:relative;
-      display:inline-block;
-      margin-bottom:30px;
-      z-index:2;
-    }
+/* облака */
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('images/W.png') repeat-x;
+  background-size:700px auto;
+  opacity:0.4;
+  animation:clouds 35s linear infinite;
+  z-index:0;
+}
 
-    .title-block::before {
-      content:'';
-      position:absolute;
-      top:50%;
-      left:50%;
-      width:750px;
-      height:750px;
-      background:url('images/NFon.png') center/contain no-repeat;
-      transform:translate(-50%,-50%);
-      opacity:0.9;
-      z-index:-1;
-      pointer-events:none;
-    }
+@keyframes clouds{
+  from{background-position-x:0;}
+  to{background-position-x:-2600px;}
+}
 
-    .names {
-      font-family:'MainFont',sans-serif;
-      font-size:54px;
-      text-transform:uppercase;
-      color:var(--orange);
-      line-height:1.2;
-      text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,0 0 25px rgba(255,140,26,0.7);
-    }
+.hero-content{
+  position:relative;
+  z-index:2;
+}
 
-    .names .and {
-      font-size:32px;
-      display:block;
-      margin:5px 0;
-      letter-spacing:0;
-    }
+/* ===== ТИТУЛ ===== */
 
-    .mission {
-      font-family:'MainFont',sans-serif;
-      font-size:30px;
-      margin-top:15px;
-      text-transform:uppercase;
-      color:var(--orange);
-      letter-spacing:2px;
-      text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,0 0 18px rgba(255,140,26,0.6);
-    }
+.title-block{
+  position:relative;
+  display:inline-block;
+  margin-bottom:30px;
+}
 
-    .subtitle { font-size:20px; margin-bottom:15px; }
-    .hero-text { font-size:18px; line-height:1.6; margin-bottom:20px; }
+.title-block::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:750px;
+  height:750px;
+  background:url('images/NFon.png') center/contain no-repeat;
+  transform:translate(-50%,-50%);
+  opacity:0.9;
+  z-index:-1;
+  pointer-events:none;
+}
 
-    .btn {
-      display:inline-block;
-      padding:14px 32px;
-      border:2px solid var(--orange);
-      color:var(--orange);
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      transition:0.3s;
-    }
+.names{
+  font-family:'MainFont',sans-serif;
+  font-size:54px;
+  text-transform:uppercase;
+  color:#ff9d2e;
+  line-height:1.2;
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     0 0 25px rgba(255,140,26,0.7);
+}
 
-    .btn:hover {
-      background:var(--orange);
-      color:#000;
-      box-shadow:0 0 25px var(--orange);
-    }
+.names .and{
+  display:block;
+  font-size:30px;
+  margin:5px 0;
+}
 
-    .scroll { margin-top:25px; font-size:14px; opacity:0.8; }
+.mission{
+  font-family:'MainFont',sans-serif;
+  font-size:30px;
+  margin-top:15px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#ff9d2e;
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     0 0 18px rgba(255,140,26,0.6);
+}
 
-    /* ===== НИЖНИЕ СЕКЦИИ (НОВЫЙ ГРАДИЕНТ) ===== */
-    section:not(.hero) {
-      background: linear-gradient(
-        to top,
-        var(--dark-orange) 0%,
-        var(--mid-orange) 60%,
-        var(--soft-orange) 100%
-      );
-      color: #fff;
-      max-width: 100%;
-    }
+.subtitle{font-size:20px;margin-bottom:15px;}
+.hero-text{font-size:18px;line-height:1.6;margin-bottom:20px;}
 
-    section:not(.hero) h2 {
-      color: #fff;
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
+.btn{
+  display:inline-block;
+  padding:14px 32px;
+  border:2px solid #ff9d2e;
+  color:#ff9d2e;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.3s;
+}
 
-    section:not(.hero) p {
-      color: #fff;
-      text-shadow: 0 0 8px rgba(0,0,0,0.6);
-    }
+.btn:hover{
+  background:#ff9d2e;
+  color:#000;
+  box-shadow:0 0 25px #ff9d2e;
+}
 
-    .ramen {
-      margin-top:20px;
-      color:#fff;
-      font-size:20px;
-      text-shadow:0 0 8px rgba(0,0,0,0.6);
-    }
+.scroll{margin-top:25px;font-size:14px;opacity:.8;}
 
-    footer {
-      padding:60px 20px;
-      background: linear-gradient(
-        to top,
-        #7a3b00,
-        #b45d0f
-      );
-      text-align:center;
-      color:#fff;
-    }
+/* ===== ТЕКСТ В НИЖНЕЙ ЧАСТИ ===== */
 
-    footer span {
-      font-family:'MainFont',sans-serif;
-      color:#fff;
-    }
+section:not(.hero) h2{
+  margin-bottom:25px;
+  text-shadow:0 0 10px rgba(0,0,0,0.6);
+}
 
-    html { scroll-behavior:smooth; }
+section:not(.hero) p{
+  margin-bottom:10px;
+  text-shadow:0 0 8px rgba(0,0,0,0.6);
+}
 
-    @media(max-width:768px){
-      .names { font-size:36px; }
-      .names .and { font-size:20px; }
-      .mission { font-size:20px; }
-      .title-block::before { width:500px; height:500px; }
-      h2 { font-size:22px; }
-      section { padding:60px 20px; }
-      .subtitle { font-size:16px; }
-      .hero-text { font-size:15px; }
-    }
-  </style>
+footer{
+  padding:80px 20px;
+  text-align:center;
+  background:transparent;
+}
+
+footer span{
+  font-family:'MainFont',sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+
+@media(max-width:768px){
+  .names{font-size:36px;}
+  .names .and{font-size:20px;}
+  .mission{font-size:20px;}
+  .title-block::before{width:500px;height:500px;}
+  section{padding:60px 20px;}
+  .hero-text{font-size:15px;}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero show">
-    <div class="hero-content">
-
-      <div class="title-block">
-        <div class="names">
-          <span>Алсу</span>
-          <span class="and">と</span>
-          <span>Вадим</span>
-        </div>
-        <div class="mission">Миссия ранга S</div>
+<section class="hero show">
+  <div class="hero-content">
+    <div class="title-block">
+      <div class="names">
+        <span>Алсу</span>
+        <span class="and">と</span>
+        <span>Вадим</span>
       </div>
-
-      <div class="subtitle">Объединение двух сердец</div>
-
-      <div class="hero-text">
-        Путь ниндзя привёл нас к моменту,<br>
-        который изменит всё
-      </div>
-
-      <a href="#story" class="btn">Принять задание</a>
-      <div class="scroll">⬇ прокрутите свиток ⬇</div>
-
+      <div class="mission">Миссия ранга S</div>
     </div>
-  </section>
 
-  <!-- Остальные блоки БЕЗ ИЗМЕНЕНИЯ ТЕКСТА -->
-  <section id="story">
-    <h2>История миссии</h2>
-    <p>
-      Как и в любой легенде, всё началось с простой встречи.<br>
-      Со временем пути переплелись,<br>
-      а одиночество уступило место доверию.
-    </p>
-    <p>
-      Теперь две чакры стали одной,<br>
-      и впереди — миссия длиною в жизнь.
-    </p>
-  </section>
+    <div class="subtitle">Объединение двух сердец</div>
 
-  <section>
-    <h2>Досье операции</h2>
-    <p>📅 18 февраля 2026 года</p>
-    <p>📍 Комплекс «Тан»</p>
-    <p>г. Уфа, ул. Рихарда Зорге, 45</p>
-  </section>
-
-  <section>
-    <h2>План операции</h2>
-    <p>🕓 16:30 — Сбор союзников</p>
-    <p>💍 17:00 — Объединение кланов</p>
-    <p>🍜 17:30 — Праздничный рамэн</p>
-    <p>🌙 23:00 — Завершение миссии</p>
-    <div class="ramen">
-      🍥 Ичираку рекомендует: уходить сытым и счастливым
+    <div class="hero-text">
+      Путь ниндзя привёл нас к моменту,<br>
+      который изменит всё
     </div>
-  </section>
 
-  <section>
-    <h2>Слово Хокаге</h2>
-    <p>
-      Истинная сила ниндзя — в узах,<br>
-      которые он создаёт.
-    </p>
-    <p>
-      Пусть этот союз будет крепким,<br>
-      путь — светлым,<br>
-      а дом — полной чашей.
-    </p>
-    <p><em>Архив Деревни Скрытого Листа</em></p>
-  </section>
+    <a href="#story" class="btn">Принять задание</a>
+    <div class="scroll">⬇ прокрутите свиток ⬇</div>
+  </div>
+</section>
 
-  <footer>
-    <p>Мы будем счастливы разделить этот день с вами</p>
-    <p><span>Алсу と Вадим</span></p>
-  </footer>
+<section id="story">
+  <h2>История миссии</h2>
+  <p>Как и в любой легенде, всё началось с простой встречи.<br>
+  Со временем пути переплелись,<br>
+  а одиночество уступило место доверию.</p>
+  <p>Теперь две чакры стали одной,<br>
+  и впереди — миссия длиною в жизнь.</p>
+</section>
 
-  <script>
-    const sections=document.querySelectorAll('section');
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.classList.add('show');}
-      });
-    },{threshold:0.2});
-    sections.forEach(sec=>observer.observe(sec));
-  </script>
+<section>
+  <h2>Досье операции</h2>
+  <p>📅 18 февраля 2026 года</p>
+  <p>📍 Комплекс «Тан»</p>
+  <p>г. Уфа, ул. Рихарда Зорге, 45</p>
+</section>
+
+<section>
+  <h2>План операции</h2>
+  <p>🕓 16:30 — Сбор союзников</p>
+  <p>💍 17:00 — Объединение кланов</p>
+  <p>🍜 17:30 — Праздничный рамэн</p>
+  <p>🌙 23:00 — Завершение миссии</p>
+</section>
+
+<section>
+  <h2>Слово Хокаге</h2>
+  <p>Истинная сила ниндзя — в узах,<br>
+  которые он создаёт.</p>
+  <p>Пусть этот союз будет крепким,<br>
+  путь — светлым,<br>
+  а дом — полной чашей.</p>
+  <p><em>Архив Деревни Скрытого Листа</em></p>
+</section>
+
+<footer>
+  <p>Мы будем счастливы разделить этот день с вами</p>
+  <p><span>Алсу と Вадим</span></p>
+</footer>
+
+<script>
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+</script>
 
 </body>
 </html>
