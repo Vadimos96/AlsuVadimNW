@@ -10,7 +10,7 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  /* Пастельный яркий фон */
+  /* Более яркий пастельный градиент */
   --orange-light:#f6a84f;
   --orange-mid:#ea8f2d;
   --orange-dark:#c96512;
@@ -28,6 +28,7 @@ body{
   color:var(--text-light);
   overflow-x:hidden;
 
+  /* Единый плавный фон */
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
@@ -84,7 +85,7 @@ section.show{
   to{background-position-x:-2600px;}
 }
 
-/* ===== ГРАДИЕНТНОЕ ЗАТЕМНЕНИЕ В ЦЕНТРЕ ===== */
+/* ===== ГЛАВНЫЙ ТЕКСТ ===== */
 
 .hero-content{
   position:relative;
@@ -92,23 +93,31 @@ section.show{
   padding:60px 50px;
 }
 
-/* создаём мягкое затемнение */
+/* Очень мягкое большое градиентное затемнение */
 .hero-content::before{
   content:'';
   position:absolute;
-  inset:-60px; /* чтобы выходило за края текста */
+
+  top:-120%;
+  left:-80%;
+  width:260%;
+  height:260%;
+
   z-index:-1;
+  pointer-events:none;
 
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.65) 0%,
-    rgba(0,0,0,0.55) 30%,
-    rgba(0,0,0,0.35) 55%,
-    rgba(0,0,0,0.15) 75%,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.6) 20%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.2) 60%,
+    rgba(0,0,0,0.08) 75%,
+    rgba(0,0,0,0.02) 85%,
     rgba(0,0,0,0.0) 100%
   );
 
-  pointer-events:none;
+  filter: blur(20px);
 }
 
 /* ===== ТИТУЛ ===== */
