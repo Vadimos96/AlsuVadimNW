@@ -13,17 +13,21 @@
   --orange-light:#e58a2a;
   --orange-mid:#c96a12;
   --orange-dark:#7a3b00;
-  --text-light:#fff;
+  --text-light:#ffffff;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
   overflow-x:hidden;
 
-  /* ЕДИНЫЙ ФОН ДЛЯ ВСЕГО САЙТА */
+  /* ЕДИНЫЙ ФОН БЕЗ СТЫКОВ */
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
@@ -39,8 +43,7 @@ section{
   max-width:900px;
   margin:0 auto;
   text-align:center;
-  position:relative;
-  background:transparent; /* никаких отдельных фонов */
+  background:transparent;
   opacity:0;
   transform:translateY(40px);
   transition:1s ease;
@@ -63,26 +66,7 @@ section.show{
   background:url('images/Fon1.png') center/cover no-repeat;
 }
 
-/* затемнение без черного стыка */
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:1;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.45) 0%,
-      rgba(0,0,0,0.55) 60%,
-      rgba(201,106,18,0.6) 85%,   /* цвет совпадает с mid */
-      rgba(201,106,18,0.9) 95%,
-      rgba(201,106,18,1) 100%
-    );
-}
-
-
-/* облака */
+/* Облака */
 .hero::before{
   content:'';
   position:absolute;
@@ -161,8 +145,18 @@ section.show{
      0 0 18px rgba(255,140,26,0.6);
 }
 
-.subtitle{font-size:20px;margin-bottom:15px;}
-.hero-text{font-size:18px;line-height:1.6;margin-bottom:20px;}
+.subtitle{
+  font-size:20px;
+  margin-bottom:15px;
+  text-shadow:0 0 10px rgba(0,0,0,0.6);
+}
+
+.hero-text{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:20px;
+  text-shadow:0 0 10px rgba(0,0,0,0.6);
+}
 
 .btn{
   display:inline-block;
@@ -181,9 +175,13 @@ section.show{
   box-shadow:0 0 25px #ff9d2e;
 }
 
-.scroll{margin-top:25px;font-size:14px;opacity:.8;}
+.scroll{
+  margin-top:25px;
+  font-size:14px;
+  opacity:.8;
+}
 
-/* ===== ТЕКСТ В НИЖНЕЙ ЧАСТИ ===== */
+/* ===== НИЖНИЙ ТЕКСТ ===== */
 
 section:not(.hero) h2{
   margin-bottom:25px;
@@ -205,7 +203,11 @@ footer span{
   font-family:'MainFont',sans-serif;
 }
 
-html{scroll-behavior:smooth;}
+html{
+  scroll-behavior:smooth;
+}
+
+/* ===== АДАПТИВ ===== */
 
 @media(max-width:768px){
   .names{font-size:36px;}
