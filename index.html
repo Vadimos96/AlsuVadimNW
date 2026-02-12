@@ -10,7 +10,7 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  /* Более яркий пастельный градиент */
+  /* Пастельный яркий фон */
   --orange-light:#f6a84f;
   --orange-mid:#ea8f2d;
   --orange-dark:#c96512;
@@ -28,7 +28,6 @@ body{
   color:var(--text-light);
   overflow-x:hidden;
 
-  /* Единый пастельный фон */
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
@@ -65,6 +64,7 @@ section.show{
   position:relative;
   text-align:center;
   background:url('images/Fon1.png') center/cover no-repeat;
+  overflow:hidden;
 }
 
 /* Облака */
@@ -84,21 +84,31 @@ section.show{
   to{background-position-x:-2600px;}
 }
 
-/* ===== ЗАТЕМНЕНИЕ ТОЛЬКО ПОД ТЕКСТОМ ===== */
+/* ===== ГРАДИЕНТНОЕ ЗАТЕМНЕНИЕ В ЦЕНТРЕ ===== */
 
 .hero-content{
   position:relative;
   z-index:2;
+  padding:60px 50px;
+}
 
-  /* Подложка */
-  background:rgba(0,0,0,0.45);
-  backdrop-filter:blur(6px);
-  -webkit-backdrop-filter:blur(6px);
+/* создаём мягкое затемнение */
+.hero-content::before{
+  content:'';
+  position:absolute;
+  inset:-60px; /* чтобы выходило за края текста */
+  z-index:-1;
 
-  padding:50px 40px;
-  border-radius:25px;
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.55) 30%,
+    rgba(0,0,0,0.35) 55%,
+    rgba(0,0,0,0.15) 75%,
+    rgba(0,0,0,0.0) 100%
+  );
 
-  box-shadow:0 0 40px rgba(0,0,0,0.4);
+  pointer-events:none;
 }
 
 /* ===== ТИТУЛ ===== */
@@ -226,7 +236,7 @@ html{
   .mission{font-size:20px;}
   .title-block::before{width:500px;height:500px;}
   section{padding:60px 20px;}
-  .hero-content{padding:35px 25px;}
+  .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
 }
 </style>
