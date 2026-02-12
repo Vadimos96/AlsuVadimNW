@@ -17,9 +17,7 @@
 }
 
 :root {
-  --orange-light: #ffd976;
-  --orange-mid: #ff9a1a;
-  --orange-dark: #ff5e00;
+  --orange: #ff8c1a;
   --light: #f5f2ee;
 }
 
@@ -31,8 +29,8 @@
 
 body {
   background: #000;
-  font-family: 'AnimeAce', sans-serif;
   color: var(--light);
+  font-family: 'AnimeAce', sans-serif;
   overflow-x: hidden;
 }
 
@@ -48,45 +46,67 @@ body {
   justify-content: center;
 }
 
+/* затемнение */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: linear-gradient(
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.7)
+  );
   z-index: 1;
 }
 
-/* Облака */
+/* Дальний слой облаков */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('images/W.png') repeat-x;
   background-size: 900px auto;
-  opacity: 0.3;
-  animation: clouds 100s linear infinite;
+  opacity: 0.25;
+  animation: cloudsFar 80s linear infinite;
   z-index: 0;
 }
 
-@keyframes clouds {
+/* Ближний слой облаков */
+.clouds-front {
+  position: absolute;
+  inset: 0;
+  background: url('images/W.png') repeat-x;
+  background-size: 650px auto;
+  opacity: 0.45;
+  animation: cloudsNear 35s linear infinite;
+  z-index: 0;
+}
+
+@keyframes cloudsFar {
   from { background-position-x: 0; }
   to   { background-position-x: -4000px; }
 }
+
+@keyframes cloudsNear {
+  from { background-position-x: 0; }
+  to   { background-position-x: -4000px; }
+}
+
+/* ===== КОНТЕНТ ===== */
 
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
-/* ===== ИМЕНА ===== */
+/* ===== ИМЕНА В ЦЕНТРЕ ===== */
 
 .center-block {
   flex: 1;
@@ -103,108 +123,78 @@ body {
 .logo::before {
   content: '';
   position: absolute;
-  inset: -80px -120px;
+  inset: -150px -220px;
   background: url('images/NFon.png') center/contain no-repeat;
-  opacity: 0.9;
+  opacity: 0.95;
   z-index: 0;
 }
 
-.names-wrapper {
+.names {
   position: relative;
-  display: inline-block;
-}
-
-/* ЧЕРНЫЙ КОНТУР */
-.names-outline {
   font-family: 'MainFont', sans-serif;
-  font-size: 100px;
-  line-height: 1.05;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
+  color: var(--orange);
   z-index: 1;
-
   text-shadow:
-    3px 3px 0 #000,
-    -3px 3px 0 #000,
-    3px -3px 0 #000,
-    -3px -3px 0 #000,
-    0 8px 12px rgba(0,0,0,0.6);
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     0 0 28px rgba(255,140,26,0.8);
 }
 
-/* ГРАДИЕНТ */
-.names-gradient {
-  font-family: 'MainFont', sans-serif;
-  font-size: 100px;
-  line-height: 1.05;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 2;
-
-  background: linear-gradient(
-    180deg,
-    var(--orange-light) 0%,
-    var(--orange-mid) 50%,
-    var(--orange-dark) 100%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ===== НИЗ HERO ===== */
+/* ===== НИЖНИЙ БЛОК ===== */
 
 .hero-bottom {
-  padding-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-.mission-title {
+.mission {
   font-family: 'MainFont', sans-serif;
-  font-size: 26px;
+  font-size: 22px;
+  color: var(--orange);
+  margin-bottom: 12px;
   text-transform: uppercase;
-  margin-bottom: 18px;
-
-  background: linear-gradient(
-    180deg,
-    var(--orange-light),
-    var(--orange-dark)
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  font-size: 17px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
 .hero-text {
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 18px;
 }
 
 .btn {
   display: inline-block;
-  padding: 14px 34px;
-  border: 2px solid var(--orange-mid);
-  color: var(--orange-mid);
+  padding: 12px 28px;
+  border: 2px solid var(--orange);
+  color: var(--orange);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: 0.3s;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .btn:hover {
-  background: var(--orange-mid);
+  background: var(--orange);
   color: #000;
-  box-shadow: 0 0 25px var(--orange-mid);
+  box-shadow: 0 0 25px var(--orange);
 }
 
-/* ===== СЕКЦИИ ===== */
+.scroll {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ===== СЕКЦИИ НИЖЕ ===== */
 
 section {
   padding: 100px 20px;
@@ -241,20 +231,19 @@ footer {
 }
 
 footer span {
-  color: var(--orange-mid);
+  color: var(--orange);
   font-family: 'MainFont', sans-serif;
 }
 
-/* МОБИЛКА */
+/* ===== МОБИЛКА ===== */
 
 @media (max-width: 600px) {
-  .names-outline,
-  .names-gradient {
-    font-size: 58px;
+  .names {
+    font-size: 42px;
   }
 
   .logo::before {
-    inset: -50px -70px;
+    inset: -100px -140px;
   }
 }
 </style>
@@ -264,36 +253,62 @@ footer span {
 
 <section class="hero show">
 
+  <div class="clouds-front"></div>
+
   <div class="hero-content">
 
+    <!-- ЦЕНТР -->
     <div class="center-block">
       <div class="logo">
-        <div class="names-wrapper">
-          <div class="names-outline">
-            Алсу<br>Вадим
-          </div>
-          <div class="names-gradient">
-            Алсу<br>Вадим
-          </div>
+        <div class="names">
+          Алсу<br>
+          Вадим
         </div>
       </div>
     </div>
 
+    <!-- НИЗ -->
     <div class="hero-bottom">
-      <div class="mission-title">Миссия ранга S</div>
-
+      <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
-
       <div class="hero-text">
         Путь ниндзя привёл нас к моменту,<br>
         который изменит всё
       </div>
-
       <a href="#story" class="btn">Принять задание</a>
+      <div class="scroll">⬇ прокрутите свиток ⬇</div>
     </div>
 
   </div>
 </section>
 
+<section id="story">
+  <h2>История миссии</h2>
+  <p>
+    Как и в любой легенде, всё началось с простой встречи.<br>
+    Со временем пути переплелись,<br>
+    а одиночество уступило место доверию.
+  </p>
+</section>
+
+<footer>
+  <p>Мы будем счастливы разделить этот день с вами</p>
+  <p><span>Алсу и Вадим</span></p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
+
 </body>
 </html>
+Это стабильный код работаем с ним 
