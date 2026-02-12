@@ -10,9 +10,10 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  --orange-light:#e58a2a;
-  --orange-mid:#c96a12;
-  --orange-dark:#7a3b00;
+  /* Более яркий пастельный градиент */
+  --orange-light:#f6a84f;
+  --orange-mid:#ea8f2d;
+  --orange-dark:#c96512;
   --text-light:#ffffff;
 }
 
@@ -27,11 +28,11 @@ body{
   color:var(--text-light);
   overflow-x:hidden;
 
-  /* ЕДИНЫЙ ФОН БЕЗ СТЫКОВ */
+  /* Единый пастельный фон */
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
-    var(--orange-mid) 45%,
+    var(--orange-mid) 50%,
     var(--orange-dark) 100%
   );
 }
@@ -73,7 +74,7 @@ section.show{
   inset:0;
   background:url('images/W.png') repeat-x;
   background-size:700px auto;
-  opacity:0.4;
+  opacity:0.35;
   animation:clouds 35s linear infinite;
   z-index:0;
 }
@@ -83,9 +84,21 @@ section.show{
   to{background-position-x:-2600px;}
 }
 
+/* ===== ЗАТЕМНЕНИЕ ТОЛЬКО ПОД ТЕКСТОМ ===== */
+
 .hero-content{
   position:relative;
   z-index:2;
+
+  /* Подложка */
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+
+  padding:50px 40px;
+  border-radius:25px;
+
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -114,14 +127,14 @@ section.show{
   font-family:'MainFont',sans-serif;
   font-size:54px;
   text-transform:uppercase;
-  color:#ff9d2e;
+  color:#ffb35a;
   line-height:1.2;
   text-shadow:
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-     0 0 25px rgba(255,140,26,0.7);
+     0 0 25px rgba(255,170,70,0.7);
 }
 
 .names .and{
@@ -136,33 +149,31 @@ section.show{
   margin-top:15px;
   text-transform:uppercase;
   letter-spacing:2px;
-  color:#ff9d2e;
+  color:#ffb35a;
   text-shadow:
     -2px -2px 0 #000,
      2px -2px 0 #000,
     -2px  2px 0 #000,
      2px  2px 0 #000,
-     0 0 18px rgba(255,140,26,0.6);
+     0 0 18px rgba(255,170,70,0.6);
 }
 
 .subtitle{
   font-size:20px;
   margin-bottom:15px;
-  text-shadow:0 0 10px rgba(0,0,0,0.6);
 }
 
 .hero-text{
   font-size:18px;
   line-height:1.6;
   margin-bottom:20px;
-  text-shadow:0 0 10px rgba(0,0,0,0.6);
 }
 
 .btn{
   display:inline-block;
   padding:14px 32px;
-  border:2px solid #ff9d2e;
-  color:#ff9d2e;
+  border:2px solid #ffb35a;
+  color:#ffb35a;
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:2px;
@@ -170,27 +181,27 @@ section.show{
 }
 
 .btn:hover{
-  background:#ff9d2e;
+  background:#ffb35a;
   color:#000;
-  box-shadow:0 0 25px #ff9d2e;
+  box-shadow:0 0 25px #ffb35a;
 }
 
 .scroll{
   margin-top:25px;
   font-size:14px;
-  opacity:.8;
+  opacity:.85;
 }
 
 /* ===== НИЖНИЙ ТЕКСТ ===== */
 
 section:not(.hero) h2{
   margin-bottom:25px;
-  text-shadow:0 0 10px rgba(0,0,0,0.6);
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 section:not(.hero) p{
   margin-bottom:10px;
-  text-shadow:0 0 8px rgba(0,0,0,0.6);
+  text-shadow:0 0 6px rgba(0,0,0,0.4);
 }
 
 footer{
@@ -215,6 +226,7 @@ html{
   .mission{font-size:20px;}
   .title-block::before{width:500px;height:500px;}
   section{padding:60px 20px;}
+  .hero-content{padding:35px 25px;}
   .hero-text{font-size:15px;}
 }
 </style>
