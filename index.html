@@ -56,40 +56,22 @@ body {
   z-index: 1;
 }
 
-/* Облака дальние */
+/* Облака */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('images/W.png') repeat-x;
   background-size: 900px auto;
-  opacity: 0.25;
-  animation: cloudsFar 120s linear infinite;
+  opacity: 0.3;
+  animation: clouds 100s linear infinite;
   z-index: 0;
 }
 
-/* Облака ближние */
-.clouds-front {
-  position: absolute;
-  inset: 0;
-  background: url('images/W.png') repeat-x;
-  background-size: 650px auto;
-  opacity: 0.45;
-  animation: cloudsNear 55s linear infinite;
-  z-index: 0;
-}
-
-@keyframes cloudsFar {
+@keyframes clouds {
   from { background-position-x: 0; }
   to   { background-position-x: -4000px; }
 }
-
-@keyframes cloudsNear {
-  from { background-position-x: 0; }
-  to   { background-position-x: -4000px; }
-}
-
-/* ===== HERO CONTENT ===== */
 
 .hero-content {
   position: relative;
@@ -118,7 +100,6 @@ body {
   display: inline-block;
 }
 
-/* NFon меньше */
 .logo::before {
   content: '';
   position: absolute;
@@ -128,7 +109,32 @@ body {
   z-index: 0;
 }
 
-/* ДВОЙНОЙ КОНТУР */
+.names-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* ЧЕРНЫЙ КОНТУР */
+.names-outline {
+  font-family: 'MainFont', sans-serif;
+  font-size: 100px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  text-shadow:
+    3px 3px 0 #000,
+    -3px 3px 0 #000,
+    3px -3px 0 #000,
+    -3px -3px 0 #000,
+    0 8px 12px rgba(0,0,0,0.6);
+}
+
+/* ГРАДИЕНТ */
 .names-gradient {
   font-family: 'MainFont', sans-serif;
   font-size: 100px;
@@ -146,17 +152,6 @@ body {
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* Внутренний белый контур */
-  -webkit-text-stroke: 3px #ffffff;
-
-  /* Внешний черный контур + объем */
-  text-shadow:
-    4px 4px 0 #000,
-    -4px 4px 0 #000,
-    4px -4px 0 #000,
-    -4px -4px 0 #000,
-    0 8px 12px rgba(0,0,0,0.6);
 }
 
 /* ===== НИЗ HERO ===== */
@@ -179,14 +174,6 @@ body {
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  -webkit-text-stroke: 2px #ffffff;
-
-  text-shadow:
-    3px 3px 0 #000,
-    -3px 3px 0 #000,
-    3px -3px 0 #000,
-    -3px -3px 0 #000;
 }
 
 .subtitle {
@@ -258,15 +245,12 @@ footer span {
   font-family: 'MainFont', sans-serif;
 }
 
-/* ===== МОБИЛКА ===== */
+/* МОБИЛКА */
 
 @media (max-width: 600px) {
+  .names-outline,
   .names-gradient {
     font-size: 58px;
-  }
-
-  .mission-title {
-    font-size: 20px;
   }
 
   .logo::before {
@@ -279,14 +263,18 @@ footer span {
 <body>
 
 <section class="hero show">
-  <div class="clouds-front"></div>
 
   <div class="hero-content">
 
     <div class="center-block">
       <div class="logo">
-        <div class="names-gradient">
-          Алсу<br>Вадим
+        <div class="names-wrapper">
+          <div class="names-outline">
+            Алсу<br>Вадим
+          </div>
+          <div class="names-gradient">
+            Алсу<br>Вадим
+          </div>
         </div>
       </div>
     </div>
@@ -306,58 +294,6 @@ footer span {
 
   </div>
 </section>
-
-<section id="story">
-  <h2>История миссии</h2>
-  <p>
-    Как и в любой легенде, всё началось с простой встречи.
-    Со временем пути переплелись,
-    а одиночество уступило место доверию.
-  </p>
-  <p>
-    Теперь две чакры стали одной,
-    и впереди — миссия длиною в жизнь.
-  </p>
-</section>
-
-<section>
-  <h2>Досье операции</h2>
-  <p>📅 18 февраля 2026 года</p>
-  <p>📍 Комплекс «Тан»</p>
-  <p>г. Уфа, ул. Рихарда Зорге, 45</p>
-</section>
-
-<section>
-  <h2>План операции</h2>
-  <p>🕓 16:30 — Сбор союзников</p>
-  <p>💍 17:00 — Объединение кланов</p>
-  <p>🍜 17:30 — Праздничный рамэн</p>
-  <p>🌙 23:00 — Завершение миссии</p>
-</section>
-
-<section>
-  <h2>Слово Хокаге</h2>
-  <p>Истинная сила ниндзя — в узах, которые он создаёт.</p>
-  <p>Пусть этот союз будет крепким, путь — светлым, а дом — полной чашей.</p>
-</section>
-
-<footer>
-  <p>Мы будем счастливы разделить этот день с вами</p>
-  <p><span>Алсу и Вадим</span></p>
-</footer>
-
-<script>
-const sections = document.querySelectorAll('section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.2 });
-
-sections.forEach(sec => observer.observe(sec));
-</script>
 
 </body>
 </html>
