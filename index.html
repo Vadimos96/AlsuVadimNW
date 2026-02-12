@@ -17,7 +17,9 @@
 }
 
 :root {
-  --orange: #ff8c1a;
+  --orange-light: #ffd976;
+  --orange-mid: #ff9a1a;
+  --orange-dark: #ff5e00;
   --light: #f5f2ee;
 }
 
@@ -29,8 +31,8 @@
 
 body {
   background: #000;
-  color: var(--light);
   font-family: 'AnimeAce', sans-serif;
+  color: var(--light);
   overflow-x: hidden;
 }
 
@@ -40,73 +42,50 @@ body {
   position: relative;
   min-height: 100vh;
   background: url('images/Fon1.jpg') center/cover no-repeat;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* затемнение */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.7)
-  );
+  background: rgba(0,0,0,0.35);
   z-index: 1;
 }
 
-/* Дальний слой облаков */
+/* Облака */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background: url('images/W.png') repeat-x;
   background-size: 900px auto;
-  opacity: 0.25;
-  animation: cloudsFar 80s linear infinite;
+  opacity: 0.3;
+  animation: clouds 100s linear infinite;
   z-index: 0;
 }
 
-/* Ближний слой облаков */
-.clouds-front {
-  position: absolute;
-  inset: 0;
-  background: url('images/W.png') repeat-x;
-  background-size: 650px auto;
-  opacity: 0.45;
-  animation: cloudsNear 35s linear infinite;
-  z-index: 0;
-}
-
-@keyframes cloudsFar {
+@keyframes clouds {
   from { background-position-x: 0; }
   to   { background-position-x: -4000px; }
 }
-
-@keyframes cloudsNear {
-  from { background-position-x: 0; }
-  to   { background-position-x: -4000px; }
-}
-
-/* ===== КОНТЕНТ ===== */
 
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 60px 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
-/* ===== ИМЕНА В ЦЕНТРЕ ===== */
+/* ===== ОБЩИЙ БЛОК ЗАГОЛОВКА ===== */
 
 .center-block {
   flex: 1;
@@ -115,86 +94,104 @@ body {
   justify-content: center;
 }
 
-.logo {
+.title-block {
   position: relative;
   display: inline-block;
+  text-align: center;
 }
 
-.logo::before {
+/* NFon за всей композицией */
+.title-block::before {
   content: '';
   position: absolute;
-  inset: -150px -220px;
+  inset: -120px -150px;
   background: url('images/NFon.png') center/contain no-repeat;
-  opacity: 0.95;
+  opacity: 0.9;
   z-index: 0;
 }
 
-.names {
-  position: relative;
+/* ЧЕРНЫЙ КОНТУР */
+.title-outline {
   font-family: 'MainFont', sans-serif;
-  font-size: 64px;
-  line-height: 1.1;
-  letter-spacing: 1px;
+  font-size: 100px;
+  line-height: 1.05;
   text-transform: uppercase;
-  color: var(--orange);
+  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1;
+
   text-shadow:
-    -2px -2px 0 #000,
-     2px -2px 0 #000,
-    -2px  2px 0 #000,
-     2px  2px 0 #000,
-     0 0 28px rgba(255,140,26,0.8);
+    3px 3px 0 #000,
+    -3px 3px 0 #000,
+    3px -3px 0 #000,
+    -3px -3px 0 #000,
+    0 8px 12px rgba(0,0,0,0.6);
 }
 
-/* ===== НИЖНИЙ БЛОК ===== */
+/* ГРАДИЕНТ */
+.title-gradient {
+  font-family: 'MainFont', sans-serif;
+  font-size: 100px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+
+  background: linear-gradient(
+    180deg,
+    var(--orange-light) 0%,
+    var(--orange-mid) 50%,
+    var(--orange-dark) 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Миссия меньше */
+.mission-small {
+  display: block;
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+/* ===== НИЗ HERO ===== */
 
 .hero-bottom {
-  margin-bottom: 40px;
-}
-
-.mission {
-  font-family: 'MainFont', sans-serif;
-  font-size: 22px;
-  color: var(--orange);
-  margin-bottom: 12px;
-  text-transform: uppercase;
+  padding-bottom: 30px;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 17px;
   margin-bottom: 10px;
 }
 
 .hero-text {
-  font-size: 14px;
-  margin-bottom: 18px;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 28px;
-  border: 2px solid var(--orange);
-  color: var(--orange);
+  padding: 14px 34px;
+  border: 2px solid var(--orange-mid);
+  color: var(--orange-mid);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: 0.3s;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .btn:hover {
-  background: var(--orange);
+  background: var(--orange-mid);
   color: #000;
-  box-shadow: 0 0 25px var(--orange);
+  box-shadow: 0 0 25px var(--orange-mid);
 }
 
-.scroll {
-  margin-top: 15px;
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-/* ===== СЕКЦИИ НИЖЕ ===== */
+/* ===== СЕКЦИИ ===== */
 
 section {
   padding: 100px 20px;
@@ -231,19 +228,24 @@ footer {
 }
 
 footer span {
-  color: var(--orange);
+  color: var(--orange-mid);
   font-family: 'MainFont', sans-serif;
 }
 
-/* ===== МОБИЛКА ===== */
+/* МОБИЛКА */
 
 @media (max-width: 600px) {
-  .names {
-    font-size: 42px;
+  .title-outline,
+  .title-gradient {
+    font-size: 58px;
   }
 
-  .logo::before {
-    inset: -100px -140px;
+  .mission-small {
+    font-size: 20px;
+  }
+
+  .title-block::before {
+    inset: -70px -90px;
   }
 }
 </style>
@@ -253,30 +255,33 @@ footer span {
 
 <section class="hero show">
 
-  <div class="clouds-front"></div>
-
   <div class="hero-content">
 
-    <!-- ЦЕНТР -->
     <div class="center-block">
-      <div class="logo">
-        <div class="names">
-          Алсу<br>
-          Вадим
+      <div class="title-block">
+
+        <div class="title-outline">
+          Алсу<br>Вадим
+          <span class="mission-small">Миссия ранга S</span>
         </div>
+
+        <div class="title-gradient">
+          Алсу<br>Вадим
+          <span class="mission-small">Миссия ранга S</span>
+        </div>
+
       </div>
     </div>
 
-    <!-- НИЗ -->
     <div class="hero-bottom">
-      <div class="mission">Миссия ранга S</div>
       <div class="subtitle">Объединение двух сердец</div>
+
       <div class="hero-text">
         Путь ниндзя привёл нас к моменту,<br>
         который изменит всё
       </div>
+
       <a href="#story" class="btn">Принять задание</a>
-      <div class="scroll">⬇ прокрутите свиток ⬇</div>
     </div>
 
   </div>
@@ -285,10 +290,35 @@ footer span {
 <section id="story">
   <h2>История миссии</h2>
   <p>
-    Как и в любой легенде, всё началось с простой встречи.<br>
-    Со временем пути переплелись,<br>
+    Как и в любой легенде, всё началось с простой встречи.
+    Со временем пути переплелись,
     а одиночество уступило место доверию.
   </p>
+  <p>
+    Теперь две чакры стали одной,
+    и впереди — миссия длиною в жизнь.
+  </p>
+</section>
+
+<section>
+  <h2>Досье операции</h2>
+  <p>📅 18 февраля 2026 года</p>
+  <p>📍 Комплекс «Тан»</p>
+  <p>г. Уфа, ул. Рихарда Зорге, 45</p>
+</section>
+
+<section>
+  <h2>План операции</h2>
+  <p>🕓 16:30 — Сбор союзников</p>
+  <p>💍 17:00 — Объединение кланов</p>
+  <p>🍜 17:30 — Праздничный рамэн</p>
+  <p>🌙 23:00 — Завершение миссии</p>
+</section>
+
+<section>
+  <h2>Слово Хокаге</h2>
+  <p>Истинная сила ниндзя — в узах, которые он создаёт.</p>
+  <p>Пусть этот союз будет крепким, путь — светлым, а дом — полной чашей.</p>
 </section>
 
 <footer>
@@ -311,4 +341,3 @@ sections.forEach(sec => observer.observe(sec));
 
 </body>
 </html>
-Это стабильный код работаем с ним 
