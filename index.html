@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
 <title>Алсу и Вадим — Миссия ранга S</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 @font-face {
@@ -16,249 +16,299 @@
   src: url('fonts/AnimeAce.ttf') format('truetype');
 }
 
-:root{
-  --orange1:#ffb347;
-  --orange2:#ff7a00;
-  --soft1:#f4a261;
-  --soft2:#e76f2f;
+:root {
+  --orange: #ff8c1a;
+  --light: #f5f2ee;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:'AnimeAce',sans-serif;
-  overflow-x:hidden;
-  background:#000;
+body {
+  background: #000;
+  color: var(--light);
+  font-family: 'AnimeAce', sans-serif;
+  overflow-x: hidden;
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 
-.hero{
-  position:relative;
-  min-height:100vh;
-  background:url('images/Fon1.jpg') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: url('images/Fon1.jpg') center/cover no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* затемнение */
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.6));
-  z-index:1;
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0,0,0,0.45),
+    rgba(0,0,0,0.7)
+  );
+  z-index: 1;
 }
 
-/* дальние облака */
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url('images/W.png') repeat-x;
-  background-size:900px auto;
-  opacity:.25;
-  animation:cloudsFar 100s linear infinite;
-  z-index:0;
+/* Дальний слой облаков */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('images/W.png') repeat-x;
+  background-size: 900px auto;
+  opacity: 0.25;
+  animation: cloudsFar 80s linear infinite;
+  z-index: 0;
 }
 
-/* ближние облака */
-.clouds-front{
-  position:absolute;
-  inset:0;
-  background:url('images/W.png') repeat-x;
-  background-size:650px auto;
-  opacity:.45;
-  animation:cloudsNear 55s linear infinite;
-  z-index:0;
+/* Ближний слой облаков */
+.clouds-front {
+  position: absolute;
+  inset: 0;
+  background: url('images/W.png') repeat-x;
+  background-size: 650px auto;
+  opacity: 0.45;
+  animation: cloudsNear 35s linear infinite;
+  z-index: 0;
 }
 
-@keyframes cloudsFar{
-  from{background-position-x:0;}
-  to{background-position-x:-4000px;}
+@keyframes cloudsFar {
+  from { background-position-x: 0; }
+  to   { background-position-x: -4000px; }
 }
 
-@keyframes cloudsNear{
-  from{background-position-x:0;}
-  to{background-position-x:-4000px;}
+@keyframes cloudsNear {
+  from { background-position-x: 0; }
+  to   { background-position-x: -4000px; }
 }
 
-/* ================= ЛОГО ================= */
+/* ===== КОНТЕНТ ===== */
 
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:40px 20px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.logo{
-  position:relative;
-  display:inline-block;
+/* ===== ИМЕНА В ЦЕНТРЕ ===== */
+
+.center-block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* NFon позади */
-.logo::before{
-  content:'';
-  position:absolute;
-  inset:-120px -200px;
-  background:url('images/NFon.png') center/contain no-repeat;
-  z-index:0;
-  opacity:.95;
+.logo {
+  position: relative;
+  display: inline-block;
 }
 
-/* Градиентный текст */
-.gradient-text{
-  font-family:'MainFont',sans-serif;
-  text-transform:uppercase;
-  background:linear-gradient(180deg,var(--orange1),var(--orange2));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  position:relative;
-  z-index:1;
-
-  /* аккуратная обводка */
-  -webkit-text-stroke:1px #000;
+.logo::before {
+  content: '';
+  position: absolute;
+  inset: -150px -220px;
+  background: url('images/NFon.png') center/contain no-repeat;
+  opacity: 0.95;
+  z-index: 0;
 }
 
-.names{
-  font-size:64px;
-  line-height:1.1;
-  margin-bottom:25px;
+.names {
+  position: relative;
+  font-family: 'MainFont', sans-serif;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+  z-index: 1;
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000,
+     0 0 28px rgba(255,140,26,0.8);
 }
 
-.mission{
-  font-size:24px;
+/* ===== НИЖНИЙ БЛОК ===== */
+
+.hero-bottom {
+  margin-bottom: 40px;
 }
 
-/* ================= НИЖНИЕ БЛОКИ ================= */
-
-.content-wrapper{
-  position:relative;
-  padding:100px 20px;
-  background:linear-gradient(180deg,var(--soft1),var(--soft2));
-  overflow:hidden;
+.mission {
+  font-family: 'MainFont', sans-serif;
+  font-size: 22px;
+  color: var(--orange);
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-/* облака на фоне */
-.content-wrapper::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url('images/W.png') repeat;
-  background-size:800px auto;
-  opacity:.07;
-  z-index:0;
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-/* всё поверх облаков */
-.content-wrapper > *{
-  position:relative;
-  z-index:1;
+.hero-text {
+  font-size: 14px;
+  margin-bottom: 18px;
 }
 
-section{
-  max-width:900px;
-  margin:0 auto 80px;
-  text-align:center;
-  color:#000;
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+  font-size: 13px;
 }
 
-h2{
-  font-family:'MainFont',sans-serif;
-  font-size:28px;
-  margin-bottom:25px;
-  text-transform:uppercase;
+.btn:hover {
+  background: var(--orange);
+  color: #000;
+  box-shadow: 0 0 25px var(--orange);
 }
 
-p{
-  font-size:17px;
-  line-height:1.6;
-  margin-bottom:15px;
+.scroll {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-/* Кнопка на месте */
-.btn{
-  display:inline-block;
-  padding:14px 32px;
-  border:2px solid #000;
-  color:#000;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  transition:.3s;
-  font-size:14px;
+/* ===== СЕКЦИИ НИЖЕ ===== */
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
 }
 
-.btn:hover{
-  background:#000;
-  color:#fff;
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-footer{
-  text-align:center;
-  color:#000;
-  padding-top:40px;
+h2 {
+  font-family: 'MainFont', sans-serif;
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
 }
 
-@media(max-width:600px){
-  .names{font-size:44px;}
-  .logo::before{inset:-80px -120px;}
+p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+footer {
+  padding: 70px 20px;
+  background: #050505;
+  text-align: center;
+}
+
+footer span {
+  color: var(--orange);
+  font-family: 'MainFont', sans-serif;
+}
+
+/* ===== МОБИЛКА ===== */
+
+@media (max-width: 600px) {
+  .names {
+    font-size: 42px;
+  }
+
+  .logo::before {
+    inset: -100px -140px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<section class="hero show">
 
   <div class="clouds-front"></div>
 
   <div class="hero-content">
-    <div class="logo">
-      <div class="names gradient-text">
-        Алсу<br>Вадим
-      </div>
 
-      <div class="mission gradient-text">
-        Миссия ранга S
+    <!-- ЦЕНТР -->
+    <div class="center-block">
+      <div class="logo">
+        <div class="names">
+          Алсу<br>
+          Вадим
+        </div>
       </div>
     </div>
+
+    <!-- НИЗ -->
+    <div class="hero-bottom">
+      <div class="mission">Миссия ранга S</div>
+      <div class="subtitle">Объединение двух сердец</div>
+      <div class="hero-text">
+        Путь ниндзя привёл нас к моменту,<br>
+        который изменит всё
+      </div>
+      <a href="#story" class="btn">Принять задание</a>
+      <div class="scroll">⬇ прокрутите свиток ⬇</div>
+    </div>
+
   </div>
-
 </section>
 
-<div class="content-wrapper">
-
-<section>
-  <h2>Объединение двух сердец</h2>
-  <p>
-    Их история — это путь силы, доверия и любви.
-  </p>
-</section>
-
-<section>
+<section id="story">
   <h2>История миссии</h2>
   <p>
-    Всё началось с простой встречи,
-    которая изменила их судьбы.
+    Как и в любой легенде, всё началось с простой встречи.<br>
+    Со временем пути переплелись,<br>
+    а одиночество уступило место доверию.
   </p>
-
-  <a href="#" class="btn">Принять задание</a>
 </section>
 
 <footer>
   <p>Мы будем счастливы разделить этот день с вами</p>
-  <p style="font-family:'MainFont'">Алсу и Вадим</p>
+  <p><span>Алсу и Вадим</span></p>
 </footer>
 
-</div>
+<script>
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
+Это стабильный код работаем с ним 
