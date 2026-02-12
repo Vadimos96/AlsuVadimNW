@@ -17,11 +17,10 @@
 }
 
 :root {
-  --orange-light: #ffd976;
-  --orange-mid: #ff9a1a;
-  --orange-dark: #ff5e00;
-  --naruto-orange: #ff7a00;
-  --light: #f5f2ee;
+  --orange-light: #ffe2c4;
+  --orange-mid: #ffb97a;
+  --orange-soft: #f4a261;
+  --text-dark: #2a1a12;
 }
 
 * {
@@ -30,11 +29,15 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Убирает чёрную полосу */
+}
+
 body {
-  background: #000;
   font-family: 'AnimeAce', sans-serif;
-  color: var(--light);
-  overflow-x: hidden;
+  background: #000;
+  color: white;
 }
 
 /* ===== HERO ===== */
@@ -61,28 +64,17 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 1200px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 60px 20px;
   text-align: center;
 }
 
 /* ===== ЗАГОЛОВОК ===== */
 
-.center-block {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 80px; /* БОЛЬШЕ ОТСТУП */
-}
-
 .title-block {
   position: relative;
   display: inline-block;
   text-align: center;
+  margin-bottom: 90px; /* больше расстояние */
 }
 
 .title-block::before {
@@ -94,7 +86,7 @@ body {
   z-index: 0;
 }
 
-/* Тонкая обводка */
+/* ТОНКАЯ ОБВОДКА */
 .title-outline {
   font-family: 'MainFont', sans-serif;
   font-size: 100px;
@@ -110,8 +102,7 @@ body {
     2px 2px 0 #000,
     -2px 2px 0 #000,
     2px -2px 0 #000,
-    -2px -2px 0 #000,
-    0 6px 10px rgba(0,0,0,0.5);
+    -2px -2px 0 #000;
 }
 
 .title-gradient {
@@ -124,9 +115,8 @@ body {
 
   background: linear-gradient(
     180deg,
-    var(--orange-light),
-    var(--orange-mid),
-    var(--orange-dark)
+    #ffd6a5,
+    #f4a261
   );
 
   -webkit-background-clip: text;
@@ -141,10 +131,6 @@ body {
 
 /* ===== НИЗ HERO ===== */
 
-.hero-bottom {
-  padding-bottom: 40px;
-}
-
 .subtitle {
   font-size: 18px;
   margin-bottom: 12px;
@@ -158,8 +144,8 @@ body {
 .btn {
   display: inline-block;
   padding: 14px 34px;
-  border: 2px solid var(--orange-mid);
-  color: var(--orange-mid);
+  border: 2px solid #f4a261;
+  color: #f4a261;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -167,63 +153,52 @@ body {
 }
 
 .btn:hover {
-  background: var(--orange-mid);
+  background: #f4a261;
   color: #000;
-  box-shadow: 0 0 25px var(--orange-mid);
 }
 
-/* ===== НИЖНИЕ БЛОКИ В СТИЛЕ NARUTO ===== */
+/* ===== ОБЩИЙ НИЖНИЙ ФОН (СПЛОШНОЙ) ===== */
 
-section {
+.content-wrapper {
+  background: linear-gradient(
+    180deg,
+    var(--orange-light) 0%,
+    var(--orange-mid) 100%
+  );
   padding: 100px 20px;
-  text-align: center;
-  color: #1a1a1a;
-
-  background: linear-gradient(
-    180deg,
-    #ffb347 0%,
-    #ff7a00 100%
-  );
-
-  border-top: 4px solid #000;
+  color: var(--text-dark);
 }
 
-section:nth-child(even) {
-  background: linear-gradient(
-    180deg,
-    #ffa733 0%,
-    #ff6a00 100%
-  );
-}
-
-h2 {
+.content-wrapper h2 {
   font-family: 'MainFont', sans-serif;
   font-size: 32px;
   margin-bottom: 25px;
   text-transform: uppercase;
-  color: #000;
+  color: #3a1f10;
 }
 
-p {
+.content-wrapper p {
   font-size: 18px;
   line-height: 1.6;
-  margin-bottom: 15px;
-  color: #1a1a1a;
+  margin-bottom: 18px;
   font-weight: 600;
 }
 
+/* FOOTER */
+
 footer {
-  padding: 70px 20px;
   background: #111;
-  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
 }
 
 footer span {
-  color: var(--orange-mid);
+  color: #f4a261;
   font-family: 'MainFont', sans-serif;
 }
 
-/* ===== МОБИЛКА ===== */
+/* МОБИЛКА */
 
 @media (max-width: 600px) {
   .title-outline,
@@ -235,7 +210,7 @@ footer span {
     font-size: 20px;
   }
 
-  .center-block {
+  .title-block {
     margin-bottom: 60px;
   }
 }
@@ -248,59 +223,63 @@ footer span {
 
   <div class="hero-content">
 
-    <div class="center-block">
-      <div class="title-block">
+    <div class="title-block">
 
-        <div class="title-outline">
-          Алсу<br>Вадим
-          <span class="mission-small">Миссия ранга S</span>
-        </div>
-
-        <div class="title-gradient">
-          Алсу<br>Вадим
-          <span class="mission-small">Миссия ранга S</span>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="hero-bottom">
-      <div class="subtitle">Объединение двух сердец</div>
-
-      <div class="hero-text">
-        Путь ниндзя привёл нас к моменту,<br>
-        который изменит всё
+      <div class="title-outline">
+        Алсу<br>Вадим
+        <span class="mission-small">Миссия ранга S</span>
       </div>
 
-      <a href="#story" class="btn">Принять задание</a>
+      <div class="title-gradient">
+        Алсу<br>Вадим
+        <span class="mission-small">Миссия ранга S</span>
+      </div>
+
     </div>
+
+    <div class="subtitle">Объединение двух сердец</div>
+
+    <div class="hero-text">
+      Путь ниндзя привёл нас к моменту,<br>
+      который изменит всё
+    </div>
+
+    <a href="#story" class="btn">Принять задание</a>
 
   </div>
 </section>
 
-<section id="story">
-  <h2>История миссии</h2>
-  <p>Как и в любой легенде, всё началось с простой встречи.</p>
-  <p>Теперь две чакры стали одной, и впереди — миссия длиною в жизнь.</p>
-</section>
+<!-- СПЛОШНОЙ НИЖНИЙ БЛОК -->
 
-<section>
+<div class="content-wrapper" id="story">
+
+  <h2>История миссии</h2>
+  <p>
+    Как и в любой легенде, всё началось с простой встречи.
+    Со временем пути переплелись,
+    а одиночество уступило место доверию.
+  </p>
+  <p>
+    Теперь две чакры стали одной,
+    и впереди — миссия длиною в жизнь.
+  </p>
+
   <h2>Досье операции</h2>
   <p>📅 18 февраля 2026 года</p>
-  <p>📍 Комплекс «Тан», г. Уфа</p>
-</section>
+  <p>📍 Комплекс «Тан»</p>
+  <p>г. Уфа, ул. Рихарда Зорге, 45</p>
 
-<section>
   <h2>План операции</h2>
   <p>🕓 16:30 — Сбор союзников</p>
   <p>💍 17:00 — Объединение кланов</p>
   <p>🍜 17:30 — Праздничный рамэн</p>
-</section>
+  <p>🌙 23:00 — Завершение миссии</p>
 
-<section>
   <h2>Слово Хокаге</h2>
   <p>Истинная сила ниндзя — в узах, которые он создаёт.</p>
-</section>
+  <p>Пусть этот союз будет крепким, путь — светлым, а дом — полной чашей.</p>
+
+</div>
 
 <footer>
   <p>Мы будем счастливы разделить этот день с вами</p>
