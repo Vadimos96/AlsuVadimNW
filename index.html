@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<title>Алсу и Вадим — Миссия ранга S</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алсу и Вадим — Миссия ранга S</title>
 
 <style>
 @font-face {
@@ -16,233 +16,200 @@
   src: url('fonts/AnimeAce.ttf') format('truetype');
 }
 
-:root {
-  --light: #f5f2ee;
-  --orange1: #ffb347;
-  --orange2: #ff7a00;
-  --orangeSoft1: #f6a85f;
-  --orangeSoft2: #e97c2f;
+:root{
+  --orange1:#ffb347;
+  --orange2:#ff7a00;
+  --soft1:#f4a261;
+  --soft2:#e76f2f;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  background: #000;
-  color: var(--light);
-  font-family: 'AnimeAce', sans-serif;
-  overflow-x: hidden;
+body{
+  font-family:'AnimeAce',sans-serif;
+  overflow-x:hidden;
+  background:#000;
 }
 
 /* ================= HERO ================= */
 
-.hero {
-  position: relative;
-  min-height: 100vh;
-  background: url('images/Fon1.jpg') center/cover no-repeat;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero{
+  position:relative;
+  min-height:100vh;
+  background:url('images/Fon1.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
 /* затемнение */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0,0,0,0.35),
-    rgba(0,0,0,0.6)
-  );
-  z-index: 1;
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.6));
+  z-index:1;
 }
 
 /* дальние облака */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('images/W.png') repeat-x;
-  background-size: 900px auto;
-  opacity: 0.25;
-  animation: cloudsFar 90s linear infinite;
-  z-index: 0;
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('images/W.png') repeat-x;
+  background-size:900px auto;
+  opacity:.25;
+  animation:cloudsFar 100s linear infinite;
+  z-index:0;
 }
 
 /* ближние облака */
-.clouds-front {
-  position: absolute;
-  inset: 0;
-  background: url('images/W.png') repeat-x;
-  background-size: 650px auto;
-  opacity: 0.45;
-  animation: cloudsNear 45s linear infinite;
-  z-index: 0;
+.clouds-front{
+  position:absolute;
+  inset:0;
+  background:url('images/W.png') repeat-x;
+  background-size:650px auto;
+  opacity:.45;
+  animation:cloudsNear 55s linear infinite;
+  z-index:0;
 }
 
-@keyframes cloudsFar {
-  from { background-position-x: 0; }
-  to   { background-position-x: -4000px; }
+@keyframes cloudsFar{
+  from{background-position-x:0;}
+  to{background-position-x:-4000px;}
 }
 
-@keyframes cloudsNear {
-  from { background-position-x: 0; }
-  to   { background-position-x: -4000px; }
+@keyframes cloudsNear{
+  from{background-position-x:0;}
+  to{background-position-x:-4000px;}
 }
 
-/* ================= CONTENT ================= */
+/* ================= ЛОГО ================= */
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1000px;
-  padding: 60px 20px;
-  text-align: center;
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:40px 20px;
 }
 
-/* ==== ЛОГО БЛОК ==== */
-
-.logo {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 60px;
+.logo{
+  position:relative;
+  display:inline-block;
 }
 
-/* NFon */
-.logo::before {
-  content: '';
-  position: absolute;
-  inset: -120px -200px;
-  background: url('images/NFon.png') center/contain no-repeat;
-  z-index: 0;
-  opacity: 0.95;
+/* NFon позади */
+.logo::before{
+  content:'';
+  position:absolute;
+  inset:-120px -200px;
+  background:url('images/NFon.png') center/contain no-repeat;
+  z-index:0;
+  opacity:.95;
 }
 
 /* Градиентный текст */
-.gradient-text {
-  font-family: 'MainFont', sans-serif;
-  text-transform: uppercase;
-  background: linear-gradient(
-    180deg,
-    var(--orange1),
-    var(--orange2)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  z-index: 1;
+.gradient-text{
+  font-family:'MainFont',sans-serif;
+  text-transform:uppercase;
+  background:linear-gradient(180deg,var(--orange1),var(--orange2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  position:relative;
+  z-index:1;
 
-  /* аккуратная тонкая обводка */
-  -webkit-text-stroke: 1px #000;
-
-  text-shadow:
-    0 0 10px rgba(255,120,0,0.4);
+  /* аккуратная обводка */
+  -webkit-text-stroke:1px #000;
 }
 
-/* Имена */
-.names {
-  font-size: 68px;
-  line-height: 1.1;
-  margin-bottom: 25px;
+.names{
+  font-size:64px;
+  line-height:1.1;
+  margin-bottom:25px;
 }
 
-/* Миссия */
-.mission {
-  font-size: 24px;
-  margin-top: 10px;
+.mission{
+  font-size:24px;
 }
 
-/* ================= НИЖНИЙ БЛОК ================= */
+/* ================= НИЖНИЕ БЛОКИ ================= */
 
-.content-wrapper {
-  position: relative;
-  padding: 120px 20px;
-  background: linear-gradient(
-    180deg,
-    var(--orangeSoft1),
-    var(--orangeSoft2)
-  );
-  overflow: hidden;
+.content-wrapper{
+  position:relative;
+  padding:100px 20px;
+  background:linear-gradient(180deg,var(--soft1),var(--soft2));
+  overflow:hidden;
 }
 
-/* облака поверх фона */
-.content-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('images/W.png') repeat;
-  background-size: 800px auto;
-  opacity: 0.06;
-  z-index: 0;
+/* облака на фоне */
+.content-wrapper::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('images/W.png') repeat;
+  background-size:800px auto;
+  opacity:.07;
+  z-index:0;
 }
 
-/* текст поверх */
-.content-wrapper > * {
-  position: relative;
-  z-index: 1;
+/* всё поверх облаков */
+.content-wrapper > *{
+  position:relative;
+  z-index:1;
 }
 
-section {
-  max-width: 900px;
-  margin: 0 auto 80px;
-  text-align: center;
+section{
+  max-width:900px;
+  margin:0 auto 80px;
+  text-align:center;
+  color:#000;
 }
 
-h2 {
-  font-family: 'MainFont', sans-serif;
-  font-size: 28px;
-  margin-bottom: 25px;
-  text-transform: uppercase;
-  color: #000;
+h2{
+  font-family:'MainFont',sans-serif;
+  font-size:28px;
+  margin-bottom:25px;
+  text-transform:uppercase;
 }
 
-p {
-  font-size: 17px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  color: #000;
+p{
+  font-size:17px;
+  line-height:1.6;
+  margin-bottom:15px;
 }
 
-/* Кнопка */
-.btn {
-  display: inline-block;
-  padding: 14px 32px;
-  border: 2px solid #000;
-  color: #000;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: 0.3s;
-  font-size: 14px;
+/* Кнопка на месте */
+.btn{
+  display:inline-block;
+  padding:14px 32px;
+  border:2px solid #000;
+  color:#000;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.3s;
+  font-size:14px;
 }
 
-.btn:hover {
-  background: #000;
-  color: #fff;
+.btn:hover{
+  background:#000;
+  color:#fff;
 }
 
-/* футер */
-footer {
-  padding: 60px 20px;
-  text-align: center;
-  color: #000;
+footer{
+  text-align:center;
+  color:#000;
+  padding-top:40px;
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width: 600px) {
-  .names {
-    font-size: 44px;
-  }
-
-  .logo::before {
-    inset: -80px -120px;
-  }
+@media(max-width:600px){
+  .names{font-size:44px;}
+  .logo::before{inset:-80px -120px;}
 }
 </style>
 </head>
@@ -254,29 +221,33 @@ footer {
   <div class="clouds-front"></div>
 
   <div class="hero-content">
-
     <div class="logo">
       <div class="names gradient-text">
-        Алсу<br>
-        Вадим
+        Алсу<br>Вадим
       </div>
 
       <div class="mission gradient-text">
         Миссия ранга S
       </div>
     </div>
-
   </div>
+
 </section>
 
 <div class="content-wrapper">
 
-<section id="story">
+<section>
+  <h2>Объединение двух сердец</h2>
+  <p>
+    Их история — это путь силы, доверия и любви.
+  </p>
+</section>
+
+<section>
   <h2>История миссии</h2>
   <p>
-    Как и в любой легенде, всё началось с простой встречи.<br>
-    Со временем пути переплелись,<br>
-    а одиночество уступило место доверию.
+    Всё началось с простой встречи,
+    которая изменила их судьбы.
   </p>
 
   <a href="#" class="btn">Принять задание</a>
