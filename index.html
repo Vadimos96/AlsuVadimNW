@@ -26,34 +26,10 @@ body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
   overflow-x:hidden;
-  background:linear-gradient(
-    to bottom,
-    var(--orange-light) 0%,
-    var(--orange-mid) 50%,
-    var(--orange-dark) 100%
-  );
+  background:var(--orange-light);
 }
 
-/* ===== ОБЩИЕ СЕКЦИИ ===== */
-
-section{
-  padding:90px 20px;
-  max-width:900px;
-  margin:0 auto;
-  text-align:center;
-  background:transparent;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-  position:relative;
-}
-
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 
 .hero{
   min-height:100vh;
@@ -62,9 +38,10 @@ section.show{
   justify-content:center;
   position:relative;
   text-align:center;
-  background: url('images/Fon1.png') center/cover no-repeat;
-  background-color: var(--orange-light); /* плавный переход */
+  background:url('images/Fon1.png') center/cover no-repeat;
+  background-color:var(--orange-light);
   overflow:hidden;
+  margin-bottom:-1px;
 }
 
 .hero::before{
@@ -89,31 +66,60 @@ section.show{
   padding:60px 50px;
 }
 
-/* Затемнение — уменьшено сверху */
+/* Затемнение только под текстом */
 .hero-content::before{
   content:'';
   position:absolute;
-  top:-100%;
-  left:-80%;
-  width:260%;
-  height:260%;
+  top:-80%;
+  left:-70%;
+  width:240%;
+  height:240%;
   z-index:-1;
   pointer-events:none;
 
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.7) 0%,
-    rgba(0,0,0,0.5) 25%,
-    rgba(0,0,0,0.3) 45%,
-    rgba(0,0,0,0.15) 65%,
-    rgba(0,0,0,0.05) 80%,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.45) 30%,
+    rgba(0,0,0,0.25) 50%,
+    rgba(0,0,0,0.12) 70%,
+    rgba(0,0,0,0.03) 85%,
     rgba(0,0,0,0.0) 100%
   );
 
-  filter:blur(20px);
+  filter:blur(25px);
 }
 
-/* ===== ТИТУЛ ===== */
+/* ================= ОБЩИЕ СЕКЦИИ ================= */
+
+section{
+  padding:90px 20px;
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+  position:relative;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Градиент теперь только у нижних секций */
+
+section:not(.hero){
+  background:linear-gradient(
+    to bottom,
+    var(--orange-light) 0%,
+    var(--orange-mid) 50%,
+    var(--orange-dark) 100%
+  );
+}
+
+/* ================= ТИТУЛ ================= */
 
 .title-block{
   position:relative;
@@ -170,16 +176,8 @@ section.show{
      0 0 18px rgba(255,170,70,0.6);
 }
 
-.subtitle{
-  font-size:20px;
-  margin-bottom:15px;
-}
-
-.hero-text{
-  font-size:18px;
-  line-height:1.6;
-  margin-bottom:20px;
-}
+.subtitle{font-size:20px;margin-bottom:15px;}
+.hero-text{font-size:18px;line-height:1.6;margin-bottom:20px;}
 
 .btn{
   display:inline-block;
@@ -198,18 +196,14 @@ section.show{
   box-shadow:0 0 25px #ffb35a;
 }
 
-.scroll{
-  margin-top:25px;
-  font-size:14px;
-  opacity:.85;
-}
+.scroll{margin-top:25px;font-size:14px;opacity:.85;}
 
-/* ===== СЮРИКЕНЫ ===== */
+/* ================= СЮРИКЕНЫ ================= */
 
 section:not(.hero) h2{
   position:relative;
   display:inline-block;
-  padding:0 55px;
+  padding:0 65px;
   margin-bottom:25px;
   text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
@@ -219,8 +213,8 @@ section:not(.hero) h2::after{
   content:'';
   position:absolute;
   top:50%;
-  width:28px;
-  height:28px;
+  width:32px;
+  height:32px;
   transform:translateY(-50%);
   background:url('images/shuriken.png') center/contain no-repeat;
   filter:drop-shadow(0 0 6px rgba(255,180,90,0.6));
@@ -246,18 +240,18 @@ section:not(.hero) h2::after{
   to{transform:translateY(-50%) rotate(-360deg);}
 }
 
-/* ===== РАЗДЕЛИТЕЛЬ RN.png (увеличен) ===== */
+/* ================= РАЗДЕЛИТЕЛЬ ================= */
 
 section:not(.hero):not(:last-of-type)::after{
   content:'';
   position:absolute;
-  bottom:-50px;
+  bottom:-65px;
   left:50%;
   transform:translateX(-50%);
-  width:220px; /* больше */
-  height:80px; /* больше */
+  width:280px;
+  height:110px;
   background:url('images/RN.png') center/contain no-repeat;
-  opacity:0.9;
+  opacity:0.95;
   pointer-events:none;
 }
 
@@ -269,18 +263,16 @@ section:not(.hero) p{
 footer{
   padding:80px 20px;
   text-align:center;
-  background:transparent;
+  background:var(--orange-dark);
 }
 
 footer span{
   font-family:'MainFont',sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
-/* ===== АДАПТИВ ===== */
+/* ================= АДАПТИВ ================= */
 
 @media(max-width:768px){
   .names{font-size:36px;}
@@ -290,9 +282,6 @@ html{
   section{padding:60px 20px;}
   .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
-  section:not(.hero) h2{padding:0 45px;}
-  section:not(.hero) h2::before,
-  section:not(.hero) h2::after{width:24px;height:24px;}
 }
 </style>
 </head>
