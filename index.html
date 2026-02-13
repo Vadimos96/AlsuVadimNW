@@ -22,16 +22,15 @@
   box-sizing:border-box;
 }
 
+html, body {
+  width:100%;
+  overflow-x:hidden; /* главное */
+}
+
 body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
-  overflow-x:hidden;
-  background:linear-gradient(
-    to bottom,
-    var(--orange-light) 0%,
-    var(--orange-mid) 50%,
-    var(--orange-dark) 100%
-  );
+  background:linear-gradient(to bottom, var(--orange-light) 0%, var(--orange-mid) 50%, var(--orange-dark) 100%);
 }
 
 /* ===== ОБЩИЕ СЕКЦИИ ===== */
@@ -48,7 +47,7 @@ section{
   position:relative;
 }
 
-/* Разделители (увеличенные) */
+/* Разделители увеличенные */
 section:not(.hero)::after{
   content:'';
   position:absolute;
@@ -71,7 +70,7 @@ section.show{
   transform:translateY(0);
 }
 
-/* ===== HERO (ИЗНАЧАЛЬНЫЙ ВИД) ===== */
+/* ===== HERO ===== */
 
 .hero{
   min-height:100vh;
@@ -81,24 +80,48 @@ section.show{
   position:relative;
   text-align:center;
   background:url('images/Fon1.png') center/cover no-repeat;
-  overflow:hidden;
+  width:100%;
+  overflow:hidden; /* обрезаем всё, что выходит */
 }
 
-/* Облака — оригинальные */
-.hero::before{
+/* ===== ОБЛАКА ===== */
+.hero::before {
   content:'';
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
+  width:200%;
+  height:100%;
   background:url('images/W.png') repeat-x;
-  background-size:700px auto;
-  opacity:0.35;
-  animation:clouds 35s linear infinite;
+  background-size:cover;
+  opacity:0.4;
+  filter:blur(3px);
   z-index:0;
+  animation:cloudsBack 160s linear infinite;
 }
 
-@keyframes clouds{
-  from{background-position-x:0;}
-  to{background-position-x:-2600px;}
+.hero::after {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:200%;
+  height:100%;
+  background:url('images/W.png') repeat-x;
+  background-size:cover;
+  opacity:0.6;
+  z-index:0;
+  animation:cloudsFront 80s linear infinite;
+}
+
+@keyframes cloudsBack {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes cloudsFront {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ===== ГЛАВНЫЙ ТЕКСТ ===== */
@@ -109,27 +132,30 @@ section.show{
   padding:60px 50px;
 }
 
-/* Затемнение — оригинальное */
+/* затемнение сверху уменьшено, центрировано по X */
 .hero-content::before{
   content:'';
   position:absolute;
   top:-120%;
-  left:-80%;
-  width:260%;
+  left:50%;
+  width:200%;
   height:260%;
   z-index:-1;
   pointer-events:none;
+  transform:translateX(-50%);
+
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.75) 0%,
-    rgba(0,0,0,0.6) 20%,
-    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.35) 25%,
+    rgba(0,0,0,0.25) 45%,
     rgba(0,0,0,0.2) 60%,
-    rgba(0,0,0,0.08) 75%,
-    rgba(0,0,0,0.02) 85%,
+    rgba(0,0,0,0.12) 75%,
+    rgba(0,0,0,0.05) 85%,
     rgba(0,0,0,0.0) 100%
   );
-  filter: blur(20px);
+
+  filter: blur(18px);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -200,7 +226,6 @@ section.show{
   margin-bottom:20px;
 }
 
-/* Кнопка — оригинальная */
 .btn{
   display:inline-block;
   padding:14px 32px;
@@ -223,7 +248,7 @@ section.show{
   opacity:.85;
 }
 
-/* ===== СЮРИКЕНЫ ПО КРАЯМ ===== */
+/* ===== СЮРИКЕНЫ ===== */
 
 section:not(.hero) h2{
   position:relative;
