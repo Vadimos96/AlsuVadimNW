@@ -25,8 +25,13 @@
 body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
-  background:linear-gradient(to bottom, var(--orange-light) 0%, var(--orange-mid) 50%, var(--orange-dark) 100%);
-  overflow-x: hidden; /* только для body */
+  overflow-x:hidden;
+  background:linear-gradient(
+    to bottom,
+    var(--orange-light) 0%,
+    var(--orange-mid) 50%,
+    var(--orange-dark) 100%
+  );
 }
 
 /* ===== ОБЩИЕ СЕКЦИИ ===== */
@@ -43,8 +48,8 @@ section{
   position:relative;
 }
 
-/* Разделители увеличенные */
-section:not(.hero-wrapper)::after{
+/* Разделители (увеличенные) */
+section:not(.hero)::after{
   content:'';
   position:absolute;
   bottom:-110px;
@@ -66,13 +71,8 @@ section.show{
   transform:translateY(0);
 }
 
-/* ===== HERO WRAPPER ===== */
-.hero-wrapper {
-  width: 100vw;
-  overflow: hidden; /* ключ для устранения горизонтальной полосы */
-}
+/* ===== HERO (ИЗНАЧАЛЬНЫЙ ВИД) ===== */
 
-/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   display:flex;
@@ -81,48 +81,24 @@ section.show{
   position:relative;
   text-align:center;
   background:url('images/Fon1.png') center/cover no-repeat;
-  width:100%;
+  overflow:hidden;
 }
 
-/* Облака дальний слой */
+/* Облака — оригинальные */
 .hero::before{
   content:'';
   position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
+  inset:0;
   background:url('images/W.png') repeat-x;
   background-size:700px auto;
-  opacity:0.4;
-  animation:cloudsBack 80s linear infinite;
-  filter:blur(3px);
+  opacity:0.35;
+  animation:clouds 35s linear infinite;
   z-index:0;
 }
 
-/* Облака ближний слой */
-.hero::after{
-  content:'';
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  background:url('images/W.png') repeat-x;
-  background-size:550px auto;
-  opacity:0.6;
-  animation:cloudsFront 45s linear infinite;
-  z-index:0;
-}
-
-@keyframes cloudsBack{
+@keyframes clouds{
   from{background-position-x:0;}
-  to{background-position-x:-4000px;}
-}
-
-@keyframes cloudsFront{
-  from{background-position-x:0;}
-  to{background-position-x:-2500px;}
+  to{background-position-x:-2600px;}
 }
 
 /* ===== ГЛАВНЫЙ ТЕКСТ ===== */
@@ -133,7 +109,7 @@ section.show{
   padding:60px 50px;
 }
 
-/* Затемнение сверху уменьшено */
+/* Затемнение — оригинальное */
 .hero-content::before{
   content:'';
   position:absolute;
@@ -143,19 +119,17 @@ section.show{
   height:260%;
   z-index:-1;
   pointer-events:none;
-
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.45) 0%,
-    rgba(0,0,0,0.35) 25%,
-    rgba(0,0,0,0.25) 45%,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.6) 20%,
+    rgba(0,0,0,0.4) 40%,
     rgba(0,0,0,0.2) 60%,
-    rgba(0,0,0,0.12) 75%,
-    rgba(0,0,0,0.05) 85%,
+    rgba(0,0,0,0.08) 75%,
+    rgba(0,0,0,0.02) 85%,
     rgba(0,0,0,0.0) 100%
   );
-
-  filter: blur(18px);
+  filter: blur(20px);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -226,6 +200,7 @@ section.show{
   margin-bottom:20px;
 }
 
+/* Кнопка — оригинальная */
 .btn{
   display:inline-block;
   padding:14px 32px;
@@ -248,9 +223,9 @@ section.show{
   opacity:.85;
 }
 
-/* ===== СЮРИКЕНЫ ===== */
+/* ===== СЮРИКЕНЫ ПО КРАЯМ ===== */
 
-section:not(.hero-wrapper) h2{
+section:not(.hero) h2{
   position:relative;
   display:inline-block;
   margin-bottom:25px;
@@ -258,8 +233,8 @@ section:not(.hero-wrapper) h2{
   text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-section:not(.hero-wrapper) h2::before,
-section:not(.hero-wrapper) h2::after{
+section:not(.hero) h2::before,
+section:not(.hero) h2::after{
   content:'';
   position:absolute;
   top:50%;
@@ -270,12 +245,12 @@ section:not(.hero-wrapper) h2::after{
   filter:drop-shadow(0 0 8px rgba(255,180,90,0.7));
 }
 
-section:not(.hero-wrapper) h2::before{
+section:not(.hero) h2::before{
   left:0;
   transform:translateY(-50%);
 }
 
-section:not(.hero-wrapper) h2::after{
+section:not(.hero) h2::after{
   right:0;
   transform:translateY(-50%);
 }
@@ -285,7 +260,7 @@ section:not(.hero-wrapper) h2::after{
   to{transform:translateY(-50%) rotate(360deg);}
 }
 
-section:not(.hero-wrapper) p{
+section:not(.hero) p{
   margin-bottom:10px;
   text-shadow:0 0 6px rgba(0,0,0,0.4);
 }
@@ -314,9 +289,9 @@ html{
   section{padding:60px 20px;}
   .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
-  section:not(.hero-wrapper) h2{padding:0 45px;}
-  section:not(.hero-wrapper) h2::before,
-  section:not(.hero-wrapper) h2::after{
+  section:not(.hero) h2{padding:0 45px;}
+  section:not(.hero) h2::before,
+  section:not(.hero) h2::after{
     width:24px;height:24px;
   }
 }
@@ -325,29 +300,27 @@ html{
 
 <body>
 
-<section class="hero-wrapper">
-  <section class="hero show">
-    <div class="hero-content">
-      <div class="title-block">
-        <div class="names">
-          <span>Алсу</span>
-          <span class="and">と</span>
-          <span>Вадим</span>
-        </div>
-        <div class="mission">Миссия ранга S</div>
+<section class="hero show">
+  <div class="hero-content">
+    <div class="title-block">
+      <div class="names">
+        <span>Алсу</span>
+        <span class="and">と</span>
+        <span>Вадим</span>
       </div>
-
-      <div class="subtitle">Объединение двух сердец</div>
-
-      <div class="hero-text">
-        Путь ниндзя привёл нас к моменту,<br>
-        который изменит всё
-      </div>
-
-      <a href="#story" class="btn">Принять задание</a>
-      <div class="scroll">⬇ прокрутите свиток ⬇</div>
+      <div class="mission">Миссия ранга S</div>
     </div>
-  </section>
+
+    <div class="subtitle">Объединение двух сердец</div>
+
+    <div class="hero-text">
+      Путь ниндзя привёл нас к моменту,<br>
+      который изменит всё
+    </div>
+
+    <a href="#story" class="btn">Принять задание</a>
+    <div class="scroll">⬇ прокрутите свиток ⬇</div>
+  </div>
 </section>
 
 <section id="story">
