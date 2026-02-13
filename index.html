@@ -48,7 +48,7 @@ section{
   position:relative;
 }
 
-/* Разделители (увеличенные) */
+/* Разделители увеличенные */
 section:not(.hero)::after{
   content:'';
   position:absolute;
@@ -71,7 +71,7 @@ section.show{
   transform:translateY(0);
 }
 
-/* ===== HERO (ИЗНАЧАЛЬНЫЙ ВИД) ===== */
+/* ===== HERO ===== */
 
 .hero{
   min-height:100vh;
@@ -84,21 +84,39 @@ section.show{
   overflow:hidden;
 }
 
-/* Облака — оригинальные */
+/* Облака дальний слой */
 .hero::before{
   content:'';
   position:absolute;
   inset:0;
   background:url('images/W.png') repeat-x;
   background-size:700px auto;
-  opacity:0.35;
-  animation:clouds 35s linear infinite;
+  opacity:0.4;
+  animation:cloudsBack 80s linear infinite;
+  filter:blur(3px);
   z-index:0;
 }
 
-@keyframes clouds{
+/* Облака ближний слой */
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('images/W.png') repeat-x;
+  background-size:550px auto;
+  opacity:0.6;
+  animation:cloudsFront 45s linear infinite;
+  z-index:0;
+}
+
+@keyframes cloudsBack{
   from{background-position-x:0;}
-  to{background-position-x:-2600px;}
+  to{background-position-x:-4000px;}
+}
+
+@keyframes cloudsFront{
+  from{background-position-x:0;}
+  to{background-position-x:-2500px;}
 }
 
 /* ===== ГЛАВНЫЙ ТЕКСТ ===== */
@@ -109,7 +127,7 @@ section.show{
   padding:60px 50px;
 }
 
-/* Затемнение — оригинальное */
+/* Затемнение сверху уменьшено (низ сохранён) */
 .hero-content::before{
   content:'';
   position:absolute;
@@ -119,17 +137,19 @@ section.show{
   height:260%;
   z-index:-1;
   pointer-events:none;
+
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.75) 0%,
-    rgba(0,0,0,0.6) 20%,
-    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.35) 25%,
+    rgba(0,0,0,0.25) 45%,
     rgba(0,0,0,0.2) 60%,
-    rgba(0,0,0,0.08) 75%,
-    rgba(0,0,0,0.02) 85%,
+    rgba(0,0,0,0.12) 75%,
+    rgba(0,0,0,0.05) 85%,
     rgba(0,0,0,0.0) 100%
   );
-  filter: blur(20px);
+
+  filter: blur(18px);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -200,7 +220,6 @@ section.show{
   margin-bottom:20px;
 }
 
-/* Кнопка — оригинальная */
 .btn{
   display:inline-block;
   padding:14px 32px;
@@ -223,7 +242,7 @@ section.show{
   opacity:.85;
 }
 
-/* ===== СЮРИКЕНЫ ПО КРАЯМ ===== */
+/* ===== СЮРИКЕНЫ ===== */
 
 section:not(.hero) h2{
   position:relative;
