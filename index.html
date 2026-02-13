@@ -62,7 +62,8 @@ section.show{
   justify-content:center;
   position:relative;
   text-align:center;
-  background:url('images/Fon1.png') center/cover no-repeat;
+  background: url('images/Fon1.png') center/cover no-repeat;
+  background-color: var(--orange-light); /* плавный переход */
   overflow:hidden;
 }
 
@@ -245,16 +246,16 @@ section:not(.hero) h2::after{
   to{transform:translateY(-50%) rotate(-360deg);}
 }
 
-/* ===== РАЗДЕЛИТЕЛЬ RN.png ===== */
+/* ===== РАЗДЕЛИТЕЛЬ RN.png (увеличен) ===== */
 
 section:not(.hero):not(:last-of-type)::after{
   content:'';
   position:absolute;
-  bottom:-45px;
+  bottom:-50px;
   left:50%;
   transform:translateX(-50%);
-  width:160px;
-  height:60px;
+  width:220px; /* больше */
+  height:80px; /* больше */
   background:url('images/RN.png') center/contain no-repeat;
   opacity:0.9;
   pointer-events:none;
