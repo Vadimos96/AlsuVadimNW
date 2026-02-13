@@ -93,7 +93,7 @@ section.show{
 .hero::before {
   content:'';
   position:absolute;
-  top:-20%; /* подняли облака выше */
+  top:-20%; 
   left:0;
   width:200%;
   height:100%;
@@ -108,7 +108,7 @@ section.show{
 .hero::after {
   content:'';
   position:absolute;
-  top:-20%; /* подняли облака выше */
+  top:-20%; 
   left:0;
   width:200%;
   height:100%;
@@ -137,7 +137,6 @@ section.show{
   padding:60px 50px;
 }
 
-/* затемнение сверху уменьшено, центрировано по X */
 .hero-content::before{
   content:'';
   position:absolute;
@@ -148,7 +147,6 @@ section.show{
   z-index:-1;
   pointer-events:none;
   transform:translateX(-50%);
-
   background:radial-gradient(
     ellipse at center,
     rgba(0,0,0,0.45) 0%,
@@ -159,7 +157,6 @@ section.show{
     rgba(0,0,0,0.05) 85%,
     rgba(0,0,0,0.0) 100%
   );
-
   filter: blur(18px);
 }
 
@@ -324,6 +321,9 @@ html{
 </head>
 
 <body>
+
+<!-- ===== МУЗЫКА ===== -->
+<audio src="NarutoSoundtrack.mp3" autoplay loop hidden></audio>
 
 <section class="hero show">
   <div class="hero-content">
