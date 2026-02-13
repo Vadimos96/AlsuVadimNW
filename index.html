@@ -10,7 +10,6 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  /* Пастельный яркий фон */
   --orange-light:#f6a84f;
   --orange-mid:#ea8f2d;
   --orange-dark:#c96512;
@@ -27,7 +26,6 @@ body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
   overflow-x:hidden;
-
   background:linear-gradient(
     to bottom,
     var(--orange-light) 0%,
@@ -47,6 +45,7 @@ section{
   opacity:0;
   transform:translateY(40px);
   transition:1s ease;
+  position:relative;
 }
 
 section.show{
@@ -67,7 +66,6 @@ section.show{
   overflow:hidden;
 }
 
-/* Облака */
 .hero::before{
   content:'';
   position:absolute;
@@ -84,39 +82,34 @@ section.show{
   to{background-position-x:-2600px;}
 }
 
-/* ===== ГЛАВНЫЙ ТЕКСТ ===== */
-
 .hero-content{
   position:relative;
   z-index:2;
   padding:60px 50px;
 }
 
-/* Очень мягкое большое градиентное затемнение */
+/* Затемнение — уменьшено сверху */
 .hero-content::before{
   content:'';
   position:absolute;
-
-  top:-120%;
+  top:-100%;
   left:-80%;
   width:260%;
   height:260%;
-
   z-index:-1;
   pointer-events:none;
 
   background:radial-gradient(
     ellipse at center,
-    rgba(0,0,0,0.75) 0%,
-    rgba(0,0,0,0.6) 20%,
-    rgba(0,0,0,0.4) 40%,
-    rgba(0,0,0,0.2) 60%,
-    rgba(0,0,0,0.08) 75%,
-    rgba(0,0,0,0.02) 85%,
+    rgba(0,0,0,0.7) 0%,
+    rgba(0,0,0,0.5) 25%,
+    rgba(0,0,0,0.3) 45%,
+    rgba(0,0,0,0.15) 65%,
+    rgba(0,0,0,0.05) 80%,
     rgba(0,0,0,0.0) 100%
   );
 
-  filter: blur(20px);
+  filter:blur(20px);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -210,32 +203,61 @@ section.show{
   opacity:.85;
 }
 
-/* ===== НИЖНИЙ ТЕКСТ И СЮРИКЕНЫ ===== */
+/* ===== СЮРИКЕНЫ ===== */
 
 section:not(.hero) h2{
   position:relative;
   display:inline-block;
-  padding-left:45px;
+  padding:0 55px;
   margin-bottom:25px;
   text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-section:not(.hero) h2::before{
+section:not(.hero) h2::before,
+section:not(.hero) h2::after{
   content:'';
   position:absolute;
-  left:0;
   top:50%;
-  transform:translateY(-50%);
   width:28px;
   height:28px;
+  transform:translateY(-50%);
   background:url('images/shuriken.png') center/contain no-repeat;
-  animation:spin 6s linear infinite;
-  filter: drop-shadow(0 0 6px rgba(255,180,90,0.6));
+  filter:drop-shadow(0 0 6px rgba(255,180,90,0.6));
 }
 
-@keyframes spin{
+section:not(.hero) h2::before{
+  left:0;
+  animation:spinLeft 6s linear infinite;
+}
+
+section:not(.hero) h2::after{
+  right:0;
+  animation:spinRight 6s linear infinite;
+}
+
+@keyframes spinLeft{
   from{transform:translateY(-50%) rotate(0deg);}
   to{transform:translateY(-50%) rotate(360deg);}
+}
+
+@keyframes spinRight{
+  from{transform:translateY(-50%) rotate(0deg);}
+  to{transform:translateY(-50%) rotate(-360deg);}
+}
+
+/* ===== РАЗДЕЛИТЕЛЬ RN.png ===== */
+
+section:not(.hero):not(:last-of-type)::after{
+  content:'';
+  position:absolute;
+  bottom:-45px;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  height:60px;
+  background:url('images/RN.png') center/contain no-repeat;
+  opacity:0.9;
+  pointer-events:none;
 }
 
 section:not(.hero) p{
@@ -267,8 +289,9 @@ html{
   section{padding:60px 20px;}
   .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
-  section:not(.hero) h2{padding-left:38px;}
-  section:not(.hero) h2::before{width:24px;height:24px;}
+  section:not(.hero) h2{padding:0 45px;}
+  section:not(.hero) h2::before,
+  section:not(.hero) h2::after{width:24px;height:24px;}
 }
 </style>
 </head>
