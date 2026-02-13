@@ -25,13 +25,8 @@
 body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
-  overflow-x:clip; /* исправлено */
-  background:linear-gradient(
-    to bottom,
-    var(--orange-light) 0%,
-    var(--orange-mid) 50%,
-    var(--orange-dark) 100%
-  );
+  background:linear-gradient(to bottom, var(--orange-light) 0%, var(--orange-mid) 50%, var(--orange-dark) 100%);
+  overflow-x: hidden; /* только для body */
 }
 
 /* ===== ОБЩИЕ СЕКЦИИ ===== */
@@ -49,7 +44,7 @@ section{
 }
 
 /* Разделители увеличенные */
-section:not(.hero)::after{
+section:not(.hero-wrapper)::after{
   content:'';
   position:absolute;
   bottom:-110px;
@@ -71,8 +66,13 @@ section.show{
   transform:translateY(0);
 }
 
-/* ===== HERO ===== */
+/* ===== HERO WRAPPER ===== */
+.hero-wrapper {
+  width: 100vw;
+  overflow: hidden; /* ключ для устранения горизонтальной полосы */
+}
 
+/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   display:flex;
@@ -81,8 +81,7 @@ section.show{
   position:relative;
   text-align:center;
   background:url('images/Fon1.png') center/cover no-repeat;
-  overflow:hidden;
-  width:100%; /* предотвращает расширение */
+  width:100%;
 }
 
 /* Облака дальний слой */
@@ -134,7 +133,7 @@ section.show{
   padding:60px 50px;
 }
 
-/* Затемнение сверху уменьшено (низ сохранён) */
+/* Затемнение сверху уменьшено */
 .hero-content::before{
   content:'';
   position:absolute;
@@ -251,7 +250,7 @@ section.show{
 
 /* ===== СЮРИКЕНЫ ===== */
 
-section:not(.hero) h2{
+section:not(.hero-wrapper) h2{
   position:relative;
   display:inline-block;
   margin-bottom:25px;
@@ -259,8 +258,8 @@ section:not(.hero) h2{
   text-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
-section:not(.hero) h2::before,
-section:not(.hero) h2::after{
+section:not(.hero-wrapper) h2::before,
+section:not(.hero-wrapper) h2::after{
   content:'';
   position:absolute;
   top:50%;
@@ -271,12 +270,12 @@ section:not(.hero) h2::after{
   filter:drop-shadow(0 0 8px rgba(255,180,90,0.7));
 }
 
-section:not(.hero) h2::before{
+section:not(.hero-wrapper) h2::before{
   left:0;
   transform:translateY(-50%);
 }
 
-section:not(.hero) h2::after{
+section:not(.hero-wrapper) h2::after{
   right:0;
   transform:translateY(-50%);
 }
@@ -286,7 +285,7 @@ section:not(.hero) h2::after{
   to{transform:translateY(-50%) rotate(360deg);}
 }
 
-section:not(.hero) p{
+section:not(.hero-wrapper) p{
   margin-bottom:10px;
   text-shadow:0 0 6px rgba(0,0,0,0.4);
 }
@@ -315,9 +314,9 @@ html{
   section{padding:60px 20px;}
   .hero-content{padding:40px 25px;}
   .hero-text{font-size:15px;}
-  section:not(.hero) h2{padding:0 45px;}
-  section:not(.hero) h2::before,
-  section:not(.hero) h2::after{
+  section:not(.hero-wrapper) h2{padding:0 45px;}
+  section:not(.hero-wrapper) h2::before,
+  section:not(.hero-wrapper) h2::after{
     width:24px;height:24px;
   }
 }
@@ -326,27 +325,29 @@ html{
 
 <body>
 
-<section class="hero show">
-  <div class="hero-content">
-    <div class="title-block">
-      <div class="names">
-        <span>Алсу</span>
-        <span class="and">と</span>
-        <span>Вадим</span>
+<section class="hero-wrapper">
+  <section class="hero show">
+    <div class="hero-content">
+      <div class="title-block">
+        <div class="names">
+          <span>Алсу</span>
+          <span class="and">と</span>
+          <span>Вадим</span>
+        </div>
+        <div class="mission">Миссия ранга S</div>
       </div>
-      <div class="mission">Миссия ранга S</div>
+
+      <div class="subtitle">Объединение двух сердец</div>
+
+      <div class="hero-text">
+        Путь ниндзя привёл нас к моменту,<br>
+        который изменит всё
+      </div>
+
+      <a href="#story" class="btn">Принять задание</a>
+      <div class="scroll">⬇ прокрутите свиток ⬇</div>
     </div>
-
-    <div class="subtitle">Объединение двух сердец</div>
-
-    <div class="hero-text">
-      Путь ниндзя привёл нас к моменту,<br>
-      который изменит всё
-    </div>
-
-    <a href="#story" class="btn">Принять задание</a>
-    <div class="scroll">⬇ прокрутите свиток ⬇</div>
-  </div>
+  </section>
 </section>
 
 <section id="story">
