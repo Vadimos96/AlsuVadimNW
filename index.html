@@ -31,7 +31,7 @@ html, body {
 body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
-  background-color:var(--orange-light); /* запасной фон */
+  background-color:var(--orange-light); 
   background:linear-gradient(to bottom, var(--orange-light) 0%, var(--orange-mid) 50%, var(--orange-dark) 100%);
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -51,7 +51,6 @@ section{
   position:relative;
 }
 
-/* Разделители увеличенные */
 section:not(.hero)::after{
   content:'';
   position:absolute;
@@ -245,6 +244,25 @@ section.show{
   color:#000;
 }
 
+/* ===== КНОПКА МУЗЫКИ ===== */
+#music-toggle{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 25px;
+  border:2px solid #ffb35a;
+  background:transparent;
+  color:#ffb35a;
+  font-weight:bold;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#music-toggle:hover{
+  background:#ffb35a;
+  color:#000;
+}
+
 /* ===== СЮРИКЕНЫ ===== */
 
 section:not(.hero) h2{
@@ -323,7 +341,7 @@ html{
 <body>
 
 <!-- ===== МУЗЫКА ===== -->
-<audio src="NarutoSoundtrack.mp3" autoplay loop hidden></audio>
+<audio id="bg-music" src="NarutoSoundtrack.mp3" loop></audio>
 
 <section class="hero show">
   <div class="hero-content">
@@ -347,6 +365,9 @@ html{
     <a href="https://t.me/tomasorato?text=Привет!%20Я%20принимаю%20миссию%20ранга%20S.%20Пусть%20мой%20путь%20будет%20светлым,%20а%20сердце%20—%20сильным,%20как%20у%20настоящего%20ниндзя!" 
        target="_blank" class="btn">Принять задание</a>
 
+    <!-- Кнопка музыки -->
+    <button id="music-toggle">ТЫК</button>
+
   </div>
 </section>
 
@@ -361,7 +382,7 @@ html{
 
 <section>
   <h2>Досье операции</h2>
-  <p>📅 18 февраля 2026 года</p>
+  <p>📅 18 апреля 2026 года</p>
   <p>📍 Комплекс «Тан»</p>
   <p>г. Уфа, ул. Рихарда Зорге, 45</p>
 </section>
@@ -399,6 +420,20 @@ const observer=new IntersectionObserver(entries=>{
   });
 },{threshold:0.2});
 sections.forEach(sec=>observer.observe(sec));
+
+// ===== КНОПКА МУЗЫКИ =====
+const music = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-toggle');
+
+musicBtn.addEventListener('click', () => {
+  if(music.paused){
+    music.play();
+    musicBtn.textContent = "ТЫК (Вкл)";
+  } else {
+    music.pause();
+    musicBtn.textContent = "ТЫК (Выкл)";
+  }
+});
 </script>
 
 </body>
