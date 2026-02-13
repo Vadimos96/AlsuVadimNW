@@ -10,9 +10,10 @@
 @font-face { font-family:'AnimeAce'; src:url('fonts/AnimeAce.ttf') format('truetype'); }
 
 :root{
-  --orange-top:#f7b267;
-  --orange-mid:#e8892f;
-  --orange-deep:#c75a12;
+  /* Пастельный яркий фон */
+  --orange-light:#f6a84f;
+  --orange-mid:#ea8f2d;
+  --orange-dark:#c96512;
   --text-light:#ffffff;
 }
 
@@ -26,72 +27,23 @@ body{
   font-family:'AnimeAce',sans-serif;
   color:var(--text-light);
   overflow-x:hidden;
+
   background:linear-gradient(
     to bottom,
-    var(--orange-top) 0%,
+    var(--orange-light) 0%,
     var(--orange-mid) 50%,
-    var(--orange-deep) 100%
+    var(--orange-dark) 100%
   );
-}
-
-/* ===== HERO ===== */
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  background:url('images/Fon1.png') center/cover no-repeat;
-}
-
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(247,178,103,0) 60%,
-    rgba(247,178,103,0.8) 85%,
-    rgba(247,178,103,1) 100%
-  );
-}
-
-/* затемнение под текстом */
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding:60px 40px;
-}
-
-.hero-content::before{
-  content:'';
-  position:absolute;
-  top:-70%;
-  left:-60%;
-  width:220%;
-  height:220%;
-  z-index:-1;
-  background:radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,0.6) 0%,
-    rgba(0,0,0,0.4) 30%,
-    rgba(0,0,0,0.2) 55%,
-    rgba(0,0,0,0.05) 80%,
-    rgba(0,0,0,0) 100%
-  );
-  filter:blur(25px);
 }
 
 /* ===== ОБЩИЕ СЕКЦИИ ===== */
 
 section{
-  padding:100px 20px;
+  padding:90px 20px;
   max-width:900px;
   margin:0 auto;
   text-align:center;
+  background:transparent;
   opacity:0;
   transform:translateY(40px);
   transition:1s ease;
@@ -102,46 +54,69 @@ section.show{
   transform:translateY(0);
 }
 
-/* ===== ЗАГОЛОВКИ С СЮРИКЕНАМИ ===== */
+/* ===== HERO ===== */
 
-section:not(.hero) h2{
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
-  display:inline-block;
-  padding:0 60px;
-  margin-bottom:30px;
-  text-shadow:0 0 10px rgba(0,0,0,0.5);
+  text-align:center;
+  background:url('images/Fon1.png') center/cover no-repeat;
+  overflow:hidden;
 }
 
-section:not(.hero) h2::before,
-section:not(.hero) h2::after{
+/* Облака */
+.hero::before{
   content:'';
   position:absolute;
-  top:50%;
-  width:32px;
-  height:32px;
-  transform:translateY(-50%);
-  background:url('images/shuriken.png') center/contain no-repeat;
-  filter:drop-shadow(0 0 6px rgba(255,180,90,0.6));
+  inset:0;
+  background:url('images/W.png') repeat-x;
+  background-size:700px auto;
+  opacity:0.35;
+  animation:clouds 35s linear infinite;
+  z-index:0;
 }
 
-section:not(.hero) h2::before{
-  left:0;
-  animation:spinLeft 6s linear infinite;
+@keyframes clouds{
+  from{background-position-x:0;}
+  to{background-position-x:-2600px;}
 }
 
-section:not(.hero) h2::after{
-  right:0;
-  animation:spinRight 6s linear infinite;
+/* ===== ГЛАВНЫЙ ТЕКСТ ===== */
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:60px 50px;
 }
 
-@keyframes spinLeft{
-  from{transform:translateY(-50%) rotate(0deg);}
-  to{transform:translateY(-50%) rotate(360deg);}
-}
+/* Очень мягкое большое градиентное затемнение */
+.hero-content::before{
+  content:'';
+  position:absolute;
 
-@keyframes spinRight{
-  from{transform:translateY(-50%) rotate(0deg);}
-  to{transform:translateY(-50%) rotate(-360deg);}
+  top:-120%;
+  left:-80%;
+  width:260%;
+  height:260%;
+
+  z-index:-1;
+  pointer-events:none;
+
+  background:radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.6) 20%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.2) 60%,
+    rgba(0,0,0,0.08) 75%,
+    rgba(0,0,0,0.02) 85%,
+    rgba(0,0,0,0.0) 100%
+  );
+
+  filter: blur(20px);
 }
 
 /* ===== ТИТУЛ ===== */
@@ -163,6 +138,7 @@ section:not(.hero) h2::after{
   transform:translate(-50%,-50%);
   opacity:0.9;
   z-index:-1;
+  pointer-events:none;
 }
 
 .names{
@@ -200,8 +176,16 @@ section:not(.hero) h2::after{
      0 0 18px rgba(255,170,70,0.6);
 }
 
-.subtitle{font-size:20px;margin-bottom:15px;}
-.hero-text{font-size:18px;line-height:1.6;margin-bottom:20px;}
+.subtitle{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+.hero-text{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
 
 .btn{
   display:inline-block;
@@ -220,24 +204,71 @@ section:not(.hero) h2::after{
   box-shadow:0 0 25px #ffb35a;
 }
 
-.scroll{margin-top:25px;font-size:14px;opacity:.85;}
+.scroll{
+  margin-top:25px;
+  font-size:14px;
+  opacity:.85;
+}
+
+/* ===== НИЖНИЙ ТЕКСТ И СЮРИКЕНЫ ===== */
+
+section:not(.hero) h2{
+  position:relative;
+  display:inline-block;
+  padding-left:45px;
+  margin-bottom:25px;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+section:not(.hero) h2::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  height:28px;
+  background:url('images/shuriken.png') center/contain no-repeat;
+  animation:spin 6s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255,180,90,0.6));
+}
+
+@keyframes spin{
+  from{transform:translateY(-50%) rotate(0deg);}
+  to{transform:translateY(-50%) rotate(360deg);}
+}
+
+section:not(.hero) p{
+  margin-bottom:10px;
+  text-shadow:0 0 6px rgba(0,0,0,0.4);
+}
 
 footer{
-  padding:100px 20px;
+  padding:80px 20px;
   text-align:center;
+  background:transparent;
 }
 
 footer span{
   font-family:'MainFont',sans-serif;
 }
 
-html{scroll-behavior:smooth;}
+html{
+  scroll-behavior:smooth;
+}
+
+/* ===== АДАПТИВ ===== */
 
 @media(max-width:768px){
   .names{font-size:36px;}
   .names .and{font-size:20px;}
   .mission{font-size:20px;}
   .title-block::before{width:500px;height:500px;}
+  section{padding:60px 20px;}
+  .hero-content{padding:40px 25px;}
+  .hero-text{font-size:15px;}
+  section:not(.hero) h2{padding-left:38px;}
+  section:not(.hero) h2::before{width:24px;height:24px;}
 }
 </style>
 </head>
